@@ -110,299 +110,300 @@ namespace Optimization1D
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.chart = new AForge.Controls.Chart();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.minXBox = new System.Windows.Forms.TextBox();
-			this.maxXBox = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.modeBox = new System.Windows.Forms.ComboBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.selectionBox = new System.Windows.Forms.ComboBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.iterationsBox = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.onlyBestCheck = new System.Windows.Forms.CheckBox();
-			this.chromosomeLengthBox = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.populationSizeBox = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.startButton = new System.Windows.Forms.Button();
-			this.stopButton = new System.Windows.Forms.Button();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.currentValueBox = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.currentIterationBox = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.groupBox1.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			this.groupBox3.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// chart
-			// 
-			this.chart.Location = new System.Drawing.Point(10, 20);
-			this.chart.Name = "chart";
-			this.chart.Size = new System.Drawing.Size(280, 270);
-			this.chart.TabIndex = 0;
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.chart);
-			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Controls.Add(this.minXBox);
-			this.groupBox1.Controls.Add(this.maxXBox);
-			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Location = new System.Drawing.Point(10, 10);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(300, 330);
-			this.groupBox1.TabIndex = 0;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Function";
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(10, 297);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(41, 13);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Range:";
-			// 
-			// minXBox
-			// 
-			this.minXBox.Location = new System.Drawing.Point(60, 295);
-			this.minXBox.Name = "minXBox";
-			this.minXBox.Size = new System.Drawing.Size(50, 20);
-			this.minXBox.TabIndex = 3;
-			this.minXBox.Text = "";
-			this.minXBox.TextChanged += new System.EventHandler(this.minXBox_TextChanged);
-			// 
-			// maxXBox
-			// 
-			this.maxXBox.Location = new System.Drawing.Point(130, 295);
-			this.maxXBox.Name = "maxXBox";
-			this.maxXBox.Size = new System.Drawing.Size(50, 20);
-			this.maxXBox.TabIndex = 4;
-			this.maxXBox.Text = "";
-			this.maxXBox.TextChanged += new System.EventHandler(this.maxXBox_TextChanged);
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(115, 297);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(8, 16);
-			this.label2.TabIndex = 3;
-			this.label2.Text = "-";
-			// 
-			// groupBox2
-			// 
-			this.groupBox2.Controls.Add(this.modeBox);
-			this.groupBox2.Controls.Add(this.label8);
-			this.groupBox2.Controls.Add(this.selectionBox);
-			this.groupBox2.Controls.Add(this.label7);
-			this.groupBox2.Controls.Add(this.label6);
-			this.groupBox2.Controls.Add(this.iterationsBox);
-			this.groupBox2.Controls.Add(this.label5);
-			this.groupBox2.Controls.Add(this.onlyBestCheck);
-			this.groupBox2.Controls.Add(this.chromosomeLengthBox);
-			this.groupBox2.Controls.Add(this.label4);
-			this.groupBox2.Controls.Add(this.populationSizeBox);
-			this.groupBox2.Controls.Add(this.label3);
-			this.groupBox2.Location = new System.Drawing.Point(320, 10);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(185, 222);
-			this.groupBox2.TabIndex = 1;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Settings";
-			// 
-			// modeBox
-			// 
-			this.modeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.modeBox.Items.AddRange(new object[] {
-														 "Maximize",
-														 "Minimize"});
-			this.modeBox.Location = new System.Drawing.Point(110, 95);
-			this.modeBox.Name = "modeBox";
-			this.modeBox.Size = new System.Drawing.Size(65, 21);
-			this.modeBox.TabIndex = 7;
-			// 
-			// label8
-			// 
-			this.label8.Location = new System.Drawing.Point(10, 97);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(110, 17);
-			this.label8.TabIndex = 6;
-			this.label8.Text = "Optimization mode:";
-			// 
-			// selectionBox
-			// 
-			this.selectionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.selectionBox.Items.AddRange(new object[] {
-															  "Elite",
-															  "Rank",
-															  "Roulette"});
-			this.selectionBox.Location = new System.Drawing.Point(110, 70);
-			this.selectionBox.Name = "selectionBox";
-			this.selectionBox.Size = new System.Drawing.Size(65, 21);
-			this.selectionBox.TabIndex = 5;
-			// 
-			// label7
-			// 
-			this.label7.Location = new System.Drawing.Point(10, 72);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(100, 16);
-			this.label7.TabIndex = 4;
-			this.label7.Text = "Selection method:";
-			// 
-			// label6
-			// 
-			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label6.Location = new System.Drawing.Point(125, 175);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(56, 16);
-			this.label6.TabIndex = 10;
-			this.label6.Text = "( 0 - inifinity )";
-			// 
-			// iterationsBox
-			// 
-			this.iterationsBox.Location = new System.Drawing.Point(125, 155);
-			this.iterationsBox.Name = "iterationsBox";
-			this.iterationsBox.Size = new System.Drawing.Size(50, 20);
-			this.iterationsBox.TabIndex = 9;
-			this.iterationsBox.Text = "";
-			// 
-			// label5
-			// 
-			this.label5.Location = new System.Drawing.Point(10, 157);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(64, 16);
-			this.label5.TabIndex = 8;
-			this.label5.Text = "Iterations:";
-			// 
-			// onlyBestCheck
-			// 
-			this.onlyBestCheck.Location = new System.Drawing.Point(10, 195);
-			this.onlyBestCheck.Name = "onlyBestCheck";
-			this.onlyBestCheck.Size = new System.Drawing.Size(144, 16);
-			this.onlyBestCheck.TabIndex = 11;
-			this.onlyBestCheck.Text = "Show only best solution";
-			// 
-			// chromosomeLengthBox
-			// 
-			this.chromosomeLengthBox.Location = new System.Drawing.Point(125, 45);
-			this.chromosomeLengthBox.Name = "chromosomeLengthBox";
-			this.chromosomeLengthBox.Size = new System.Drawing.Size(50, 20);
-			this.chromosomeLengthBox.TabIndex = 3;
-			this.chromosomeLengthBox.Text = "";
-			// 
-			// label4
-			// 
-			this.label4.Location = new System.Drawing.Point(10, 47);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(110, 12);
-			this.label4.TabIndex = 2;
-			this.label4.Text = "Chromosome length:";
-			// 
-			// populationSizeBox
-			// 
-			this.populationSizeBox.Location = new System.Drawing.Point(125, 20);
-			this.populationSizeBox.Name = "populationSizeBox";
-			this.populationSizeBox.Size = new System.Drawing.Size(50, 20);
-			this.populationSizeBox.TabIndex = 1;
-			this.populationSizeBox.Text = "";
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(10, 22);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(85, 16);
-			this.label3.TabIndex = 0;
-			this.label3.Text = "Population size:";
-			// 
-			// startButton
-			// 
-			this.startButton.Location = new System.Drawing.Point(340, 317);
-			this.startButton.Name = "startButton";
-			this.startButton.TabIndex = 3;
-			this.startButton.Text = "&Start";
-			this.startButton.Click += new System.EventHandler(this.startButton_Click);
-			// 
-			// stopButton
-			// 
-			this.stopButton.Enabled = false;
-			this.stopButton.Location = new System.Drawing.Point(430, 317);
-			this.stopButton.Name = "stopButton";
-			this.stopButton.TabIndex = 4;
-			this.stopButton.Text = "S&top";
-			this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
-			// 
-			// groupBox3
-			// 
-			this.groupBox3.Controls.Add(this.currentValueBox);
-			this.groupBox3.Controls.Add(this.label10);
-			this.groupBox3.Controls.Add(this.currentIterationBox);
-			this.groupBox3.Controls.Add(this.label9);
-			this.groupBox3.Location = new System.Drawing.Point(320, 235);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(185, 75);
-			this.groupBox3.TabIndex = 2;
-			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "Current iteration";
-			// 
-			// currentValueBox
-			// 
-			this.currentValueBox.Location = new System.Drawing.Point(125, 45);
-			this.currentValueBox.Name = "currentValueBox";
-			this.currentValueBox.ReadOnly = true;
-			this.currentValueBox.Size = new System.Drawing.Size(50, 20);
-			this.currentValueBox.TabIndex = 3;
-			this.currentValueBox.Text = "";
-			// 
-			// label10
-			// 
-			this.label10.Location = new System.Drawing.Point(10, 47);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(60, 15);
-			this.label10.TabIndex = 2;
-			this.label10.Text = "Value:";
-			// 
-			// currentIterationBox
-			// 
-			this.currentIterationBox.Location = new System.Drawing.Point(125, 20);
-			this.currentIterationBox.Name = "currentIterationBox";
-			this.currentIterationBox.ReadOnly = true;
-			this.currentIterationBox.Size = new System.Drawing.Size(50, 20);
-			this.currentIterationBox.TabIndex = 1;
-			this.currentIterationBox.Text = "";
-			// 
-			// label9
-			// 
-			this.label9.Location = new System.Drawing.Point(10, 22);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(60, 16);
-			this.label9.TabIndex = 0;
-			this.label9.Text = "Iteration:";
-			// 
-			// MainForm
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(514, 350);
-			this.Controls.Add(this.groupBox3);
-			this.Controls.Add(this.stopButton);
-			this.Controls.Add(this.startButton);
-			this.Controls.Add(this.groupBox2);
-			this.Controls.Add(this.groupBox1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.MaximizeBox = false;
-			this.Name = "MainForm";
-			this.Text = "1D Optimization using Genetic Algorithms";
-			this.Closing += new System.ComponentModel.CancelEventHandler(this.MainForm_Closing);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox3.ResumeLayout(false);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.chart = new AForge.Controls.Chart();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.minXBox = new System.Windows.Forms.TextBox();
+            this.maxXBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.modeBox = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.selectionBox = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.iterationsBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.onlyBestCheck = new System.Windows.Forms.CheckBox();
+            this.chromosomeLengthBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.populationSizeBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.startButton = new System.Windows.Forms.Button();
+            this.stopButton = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.currentValueBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.currentIterationBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // chart
+            // 
+            this.chart.Location = new System.Drawing.Point(16, 29);
+            this.chart.Name = "chart";
+            this.chart.RangeX = ((AForge.Range)(resources.GetObject("chart.RangeX")));
+            this.chart.RangeY = ((AForge.Range)(resources.GetObject("chart.RangeY")));
+            this.chart.Size = new System.Drawing.Size(448, 395);
+            this.chart.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.chart);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.minXBox);
+            this.groupBox1.Controls.Add(this.maxXBox);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(16, 15);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(480, 482);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Function";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(16, 434);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 19);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Range:";
+            // 
+            // minXBox
+            // 
+            this.minXBox.Location = new System.Drawing.Point(96, 431);
+            this.minXBox.Name = "minXBox";
+            this.minXBox.Size = new System.Drawing.Size(80, 26);
+            this.minXBox.TabIndex = 3;
+            this.minXBox.TextChanged += new System.EventHandler(this.minXBox_TextChanged);
+            // 
+            // maxXBox
+            // 
+            this.maxXBox.Location = new System.Drawing.Point(208, 431);
+            this.maxXBox.Name = "maxXBox";
+            this.maxXBox.Size = new System.Drawing.Size(80, 26);
+            this.maxXBox.TabIndex = 4;
+            this.maxXBox.TextChanged += new System.EventHandler(this.maxXBox_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(184, 434);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(13, 23);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "-";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.modeBox);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.selectionBox);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.iterationsBox);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.onlyBestCheck);
+            this.groupBox2.Controls.Add(this.chromosomeLengthBox);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.populationSizeBox);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Location = new System.Drawing.Point(512, 15);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(296, 324);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Settings";
+            // 
+            // modeBox
+            // 
+            this.modeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.modeBox.Items.AddRange(new object[] {
+            "Maximize",
+            "Minimize"});
+            this.modeBox.Location = new System.Drawing.Point(176, 139);
+            this.modeBox.Name = "modeBox";
+            this.modeBox.Size = new System.Drawing.Size(104, 28);
+            this.modeBox.TabIndex = 7;
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(16, 142);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(176, 25);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Optimization mode:";
+            // 
+            // selectionBox
+            // 
+            this.selectionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.selectionBox.Items.AddRange(new object[] {
+            "Elite",
+            "Rank",
+            "Roulette"});
+            this.selectionBox.Location = new System.Drawing.Point(176, 102);
+            this.selectionBox.Name = "selectionBox";
+            this.selectionBox.Size = new System.Drawing.Size(104, 28);
+            this.selectionBox.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(16, 105);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(160, 24);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Selection method:";
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(200, 256);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(90, 23);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "( 0 - inifinity )";
+            // 
+            // iterationsBox
+            // 
+            this.iterationsBox.Location = new System.Drawing.Point(200, 227);
+            this.iterationsBox.Name = "iterationsBox";
+            this.iterationsBox.Size = new System.Drawing.Size(80, 26);
+            this.iterationsBox.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(16, 229);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(102, 24);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Iterations:";
+            // 
+            // onlyBestCheck
+            // 
+            this.onlyBestCheck.Location = new System.Drawing.Point(16, 285);
+            this.onlyBestCheck.Name = "onlyBestCheck";
+            this.onlyBestCheck.Size = new System.Drawing.Size(230, 23);
+            this.onlyBestCheck.TabIndex = 11;
+            this.onlyBestCheck.Text = "Show only best solution";
+            // 
+            // chromosomeLengthBox
+            // 
+            this.chromosomeLengthBox.Location = new System.Drawing.Point(200, 66);
+            this.chromosomeLengthBox.Name = "chromosomeLengthBox";
+            this.chromosomeLengthBox.Size = new System.Drawing.Size(80, 26);
+            this.chromosomeLengthBox.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(16, 69);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(176, 17);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Chromosome length:";
+            // 
+            // populationSizeBox
+            // 
+            this.populationSizeBox.Location = new System.Drawing.Point(200, 29);
+            this.populationSizeBox.Name = "populationSizeBox";
+            this.populationSizeBox.Size = new System.Drawing.Size(80, 26);
+            this.populationSizeBox.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(16, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(136, 24);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Population size:";
+            // 
+            // startButton
+            // 
+            this.startButton.Location = new System.Drawing.Point(544, 463);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(120, 34);
+            this.startButton.TabIndex = 3;
+            this.startButton.Text = "&Start";
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
+            // 
+            // stopButton
+            // 
+            this.stopButton.Enabled = false;
+            this.stopButton.Location = new System.Drawing.Point(688, 463);
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(120, 34);
+            this.stopButton.TabIndex = 4;
+            this.stopButton.Text = "S&top";
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.currentValueBox);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.currentIterationBox);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Location = new System.Drawing.Point(512, 343);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(296, 110);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Current iteration";
+            // 
+            // currentValueBox
+            // 
+            this.currentValueBox.Location = new System.Drawing.Point(200, 66);
+            this.currentValueBox.Name = "currentValueBox";
+            this.currentValueBox.ReadOnly = true;
+            this.currentValueBox.Size = new System.Drawing.Size(80, 26);
+            this.currentValueBox.TabIndex = 3;
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(16, 69);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(96, 22);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Value:";
+            // 
+            // currentIterationBox
+            // 
+            this.currentIterationBox.Location = new System.Drawing.Point(200, 29);
+            this.currentIterationBox.Name = "currentIterationBox";
+            this.currentIterationBox.ReadOnly = true;
+            this.currentIterationBox.Size = new System.Drawing.Size(80, 26);
+            this.currentIterationBox.TabIndex = 1;
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(16, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(96, 24);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Iteration:";
+            // 
+            // MainForm
+            // 
+            this.AutoScaleBaseSize = new System.Drawing.Size(8, 19);
+            this.ClientSize = new System.Drawing.Size(995, 586);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.stopButton);
+            this.Controls.Add(this.startButton);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.Name = "MainForm";
+            this.Text = "1D Optimization using Genetic Algorithms";
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.MainForm_Closing);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.ResumeLayout(false);
 
 		}
 		#endregion
