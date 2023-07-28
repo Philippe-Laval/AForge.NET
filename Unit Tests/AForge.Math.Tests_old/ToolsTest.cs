@@ -26,7 +26,7 @@ namespace AForge.Math.Tests
         [TestCase( int.MinValue, false )]
         public void IsPowerOf2Test( int valueToTest, bool expectedResult )
         {
-            Assert.That( Tools.IsPowerOf2( valueToTest ), Is.EqualTo(expectedResult));
+            Assert.AreEqual( expectedResult, Tools.IsPowerOf2( valueToTest ) );
         }
     }
 }

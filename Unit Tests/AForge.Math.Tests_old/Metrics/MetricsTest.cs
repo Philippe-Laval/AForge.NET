@@ -192,22 +192,22 @@ namespace AForge.Math.Metrics.Tests
             Assert.Throws<ArgumentException>( ( ) => dist.GetDistance( p0, q4 ) );
 
             double result = dist.GetDistance( p0, q0 );
-            Assert.That( 1, Is.EqualTo(result));
+            Assert.AreEqual( result, 1 );
 
             result = dist.GetDistance( p1, q1 );
-            Assert.That( result, Is.EqualTo(1.5));
+            Assert.AreEqual( result, 1.5 );
 
             result = dist.GetDistance( p2, q2 );
-            Assert.That( 0, Is.EqualTo(result));
+            Assert.AreEqual( result, 0 );
 
             result = dist.GetDistance( p3, q3 );
-            Assert.That( 0, Is.EqualTo(result));
+            Assert.AreEqual( result, 0 );
 
             result = dist.GetDistance( p4, q4 );
-            Assert.That(result, Is.EqualTo(4.5));
+            Assert.AreEqual( result, 4.5 );
 
             result = dist.GetDistance( p5, q5 );
-            Assert.That(result, Is.EqualTo(12));
+            Assert.AreEqual( result, 12 );
         }
 
         [Test]
