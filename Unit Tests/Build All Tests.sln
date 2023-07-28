@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AForge.Imaging.Tests", "..\AForge.Imaging.Tests\AForge.Imaging.Tests.csproj", "{33E33611-0521-4A8E-8846-BD2B8D0A9B2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AForge.Imaging.Tests", "AForge.Imaging.Tests\AForge.Imaging.Tests.csproj", "{33E33611-0521-4A8E-8846-BD2B8D0A9B2A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AForge.Math.Tests", "..\AForge.Math.Tests\AForge.Math.Tests.csproj", "{3A63B98B-7A3D-4075-8CC8-CF31E7262F33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AForge.Math.Tests", "AForge.Math.Tests\AForge.Math.Tests.csproj", "{3A63B98B-7A3D-4075-8CC8-CF31E7262F33}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AForge.Tests", "..\AForge.Tests\AForge.Tests.csproj", "{0D1448EB-C882-4856-B35A-2F9648448F7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AForge.Tests", "AForge.Tests\AForge.Tests.csproj", "{0D1448EB-C882-4856-B35A-2F9648448F7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
