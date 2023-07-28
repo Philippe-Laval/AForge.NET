@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>Perceptron_Classifier</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <UseWindowsForms>True</UseWindowsForms>
+	  <Title>Neuro Perceptron</Title>
+	  <Version>2.2.5.0</Version>
+	  <Company>AForge</Company>
+	  <Product>AForge.NET</Product>
+	  <Copyright>AForge © 2012-2023</Copyright>  
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Sources\Controls\Controls.csproj" />
+    <ProjectReference Include="..\..\..\..\Sources\Core\Core.csproj" />
+    <ProjectReference Include="..\..\..\..\Sources\Neuro\Neuro.csproj" />
+  </ItemGroup>
+
+</Project>
