@@ -20,353 +20,343 @@ using AForge.Controls;
 
 namespace TSP
 {
-	/// <summary>
-	/// Summary description for Form1.
-	/// </summary>
-	public class MainForm : System.Windows.Forms.Form
-	{
-		private System.Windows.Forms.GroupBox groupBox1;
-		private AForge.Controls.Chart mapControl;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox citiesCountBox;
-		private System.Windows.Forms.Button generateMapButton;
-		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox populationSizeBox;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.ComboBox selectionBox;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox iterationsBox;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.Button startButton;
-		private System.Windows.Forms.Button stopButton;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.TextBox currentIterationBox;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.TextBox pathLengthBox;
-		private System.Windows.Forms.CheckBox greedyCrossoverBox;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+    /// <summary>
+    /// Summary description for Form1.
+    /// </summary>
+    public class MainForm : System.Windows.Forms.Form
+    {
+        private GroupBox groupBox1;
+        private Chart mapControl;
+        private Label label1;
+        private TextBox citiesCountBox;
+        private Button generateMapButton;
+        private GroupBox groupBox2;
+        private Label label2;
+        private TextBox populationSizeBox;
+        private Label label3;
+        private ComboBox selectionBox;
+        private Label label4;
+        private TextBox iterationsBox;
+        private Label label5;
+        private GroupBox groupBox3;
+        private Button startButton;
+        private Button stopButton;
+        private Label label6;
+        private TextBox currentIterationBox;
+        private Label label7;
+        private TextBox pathLengthBox;
+        private CheckBox greedyCrossoverBox;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private Container components = null;
 
-		private int citiesCount = 20;
-		private int populationSize = 40;
-		private int iterations = 100;
-		private int selectionMethod = 0;
-		private bool greedyCrossover = true;
+        private int citiesCount = 20;
+        private int populationSize = 40;
+        private int iterations = 100;
+        private int selectionMethod = 0;
+        private bool greedyCrossover = true;
 
-		private double[,]	map = null;
+        private double[,] map = null;
 
-		private Thread workerThread = null;
-		private volatile bool needToStop = false;
+        private Thread workerThread = null;
+        private volatile bool needToStop = false;
 
-		// Constructor
-		public MainForm( )
-		{
-			//
-			// Required for Windows Form Designer support
-			//
-			InitializeComponent();
+        // Constructor
+        public MainForm()
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
 
-			// set up map control
-			mapControl.RangeX = new Range( 0, 1000 );
-			mapControl.RangeY = new Range( 0, 1000 );
-			mapControl.AddDataSeries( "map", Color.Red, Chart.SeriesType.Dots, 5, false );
-			mapControl.AddDataSeries( "path", Color.Blue, Chart.SeriesType.Line, 1, false );
+            // set up map control
+            mapControl.RangeX = new AForge.Range(0, 1000);
+            mapControl.RangeY = new AForge.Range(0, 1000);
+            mapControl.AddDataSeries("map", Color.Red, Chart.SeriesType.Dots, 5, false);
+            mapControl.AddDataSeries("path", Color.Blue, Chart.SeriesType.Line, 1, false);
 
-			//
-			selectionBox.SelectedIndex = selectionMethod;
-			greedyCrossoverBox.Checked = greedyCrossover;
-			UpdateSettings( );
-			GenerateMap( );
-		}
+            //
+            selectionBox.SelectedIndex = selectionMethod;
+            greedyCrossoverBox.Checked = greedyCrossover;
+            UpdateSettings();
+            GenerateMap();
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if (components != null) 
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.generateMapButton = new System.Windows.Forms.Button();
-			this.citiesCountBox = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.mapControl = new AForge.Controls.Chart();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.greedyCrossoverBox = new System.Windows.Forms.CheckBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.iterationsBox = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.selectionBox = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.populationSizeBox = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.pathLengthBox = new System.Windows.Forms.TextBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.currentIterationBox = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.startButton = new System.Windows.Forms.Button();
-			this.stopButton = new System.Windows.Forms.Button();
-			this.groupBox1.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			this.groupBox3.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.generateMapButton);
-			this.groupBox1.Controls.Add(this.citiesCountBox);
-			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Controls.Add(this.mapControl);
-			this.groupBox1.Location = new System.Drawing.Point(10, 10);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(300, 340);
-			this.groupBox1.TabIndex = 0;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Map";
-			// 
-			// generateMapButton
-			// 
-			this.generateMapButton.Location = new System.Drawing.Point(110, 309);
-			this.generateMapButton.Name = "generateMapButton";
-			this.generateMapButton.Size = new System.Drawing.Size(75, 22);
-			this.generateMapButton.TabIndex = 3;
-			this.generateMapButton.Text = "&Generate";
-			this.generateMapButton.Click += new System.EventHandler(this.generateMapButton_Click);
-			// 
-			// citiesCountBox
-			// 
-			this.citiesCountBox.Location = new System.Drawing.Point(50, 310);
-			this.citiesCountBox.Name = "citiesCountBox";
-			this.citiesCountBox.Size = new System.Drawing.Size(50, 20);
-			this.citiesCountBox.TabIndex = 2;
-			this.citiesCountBox.Text = "";
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(10, 312);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(40, 16);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "Cities:";
-			// 
-			// mapControl
-			// 
-			this.mapControl.Location = new System.Drawing.Point(10, 20);
-			this.mapControl.Name = "mapControl";
-			this.mapControl.Size = new System.Drawing.Size(280, 280);
-			this.mapControl.TabIndex = 0;
-			// 
-			// groupBox2
-			// 
-			this.groupBox2.Controls.Add(this.greedyCrossoverBox);
-			this.groupBox2.Controls.Add(this.label5);
-			this.groupBox2.Controls.Add(this.iterationsBox);
-			this.groupBox2.Controls.Add(this.label4);
-			this.groupBox2.Controls.Add(this.selectionBox);
-			this.groupBox2.Controls.Add(this.label3);
-			this.groupBox2.Controls.Add(this.populationSizeBox);
-			this.groupBox2.Controls.Add(this.label2);
-			this.groupBox2.Location = new System.Drawing.Point(320, 10);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(185, 225);
-			this.groupBox2.TabIndex = 1;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Settings";
-			// 
-			// greedyCrossoverBox
-			// 
-			this.greedyCrossoverBox.Location = new System.Drawing.Point(10, 70);
-			this.greedyCrossoverBox.Name = "greedyCrossoverBox";
-			this.greedyCrossoverBox.Size = new System.Drawing.Size(120, 24);
-			this.greedyCrossoverBox.TabIndex = 7;
-			this.greedyCrossoverBox.Text = "Greedy crossover";
-			// 
-			// label5
-			// 
-			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label5.Location = new System.Drawing.Point(125, 200);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(58, 15);
-			this.label5.TabIndex = 6;
-			this.label5.Text = "( 0 - inifinity )";
-			// 
-			// iterationsBox
-			// 
-			this.iterationsBox.Location = new System.Drawing.Point(125, 180);
-			this.iterationsBox.Name = "iterationsBox";
-			this.iterationsBox.Size = new System.Drawing.Size(50, 20);
-			this.iterationsBox.TabIndex = 5;
-			this.iterationsBox.Text = "";
-			// 
-			// label4
-			// 
-			this.label4.Location = new System.Drawing.Point(10, 182);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(60, 16);
-			this.label4.TabIndex = 4;
-			this.label4.Text = "Iterations:";
-			// 
-			// selectionBox
-			// 
-			this.selectionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.selectionBox.Items.AddRange(new object[] {
-															  "Elite",
-															  "Rank",
-															  "Roulette"});
-			this.selectionBox.Location = new System.Drawing.Point(110, 45);
-			this.selectionBox.Name = "selectionBox";
-			this.selectionBox.Size = new System.Drawing.Size(65, 21);
-			this.selectionBox.TabIndex = 3;
-			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(10, 47);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(100, 16);
-			this.label3.TabIndex = 2;
-			this.label3.Text = "Selection method:";
-			// 
-			// populationSizeBox
-			// 
-			this.populationSizeBox.Location = new System.Drawing.Point(125, 20);
-			this.populationSizeBox.Name = "populationSizeBox";
-			this.populationSizeBox.Size = new System.Drawing.Size(50, 20);
-			this.populationSizeBox.TabIndex = 1;
-			this.populationSizeBox.Text = "";
-			// 
-			// label2
-			// 
-			this.label2.Location = new System.Drawing.Point(10, 22);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(90, 16);
-			this.label2.TabIndex = 0;
-			this.label2.Text = "Population size:";
-			// 
-			// groupBox3
-			// 
-			this.groupBox3.Controls.Add(this.pathLengthBox);
-			this.groupBox3.Controls.Add(this.label7);
-			this.groupBox3.Controls.Add(this.currentIterationBox);
-			this.groupBox3.Controls.Add(this.label6);
-			this.groupBox3.Location = new System.Drawing.Point(320, 240);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(185, 75);
-			this.groupBox3.TabIndex = 2;
-			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "Current iteration";
-			// 
-			// pathLengthBox
-			// 
-			this.pathLengthBox.Location = new System.Drawing.Point(125, 45);
-			this.pathLengthBox.Name = "pathLengthBox";
-			this.pathLengthBox.ReadOnly = true;
-			this.pathLengthBox.Size = new System.Drawing.Size(50, 20);
-			this.pathLengthBox.TabIndex = 3;
-			this.pathLengthBox.Text = "";
-			// 
-			// label7
-			// 
-			this.label7.Location = new System.Drawing.Point(10, 47);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(80, 16);
-			this.label7.TabIndex = 2;
-			this.label7.Text = "Path length:";
-			// 
-			// currentIterationBox
-			// 
-			this.currentIterationBox.Location = new System.Drawing.Point(125, 20);
-			this.currentIterationBox.Name = "currentIterationBox";
-			this.currentIterationBox.ReadOnly = true;
-			this.currentIterationBox.Size = new System.Drawing.Size(50, 20);
-			this.currentIterationBox.TabIndex = 1;
-			this.currentIterationBox.Text = "";
-			// 
-			// label6
-			// 
-			this.label6.Location = new System.Drawing.Point(10, 22);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(50, 16);
-			this.label6.TabIndex = 0;
-			this.label6.Text = "Iteration:";
-			// 
-			// startButton
-			// 
-			this.startButton.Location = new System.Drawing.Point(340, 325);
-			this.startButton.Name = "startButton";
-			this.startButton.TabIndex = 3;
-			this.startButton.Text = "&Start";
-			this.startButton.Click += new System.EventHandler(this.startButton_Click);
-			// 
-			// stopButton
-			// 
-			this.stopButton.Enabled = false;
-			this.stopButton.Location = new System.Drawing.Point(430, 325);
-			this.stopButton.Name = "stopButton";
-			this.stopButton.TabIndex = 4;
-			this.stopButton.Text = "S&top";
-			this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
-			// 
-			// MainForm
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(514, 360);
-			this.Controls.Add(this.stopButton);
-			this.Controls.Add(this.startButton);
-			this.Controls.Add(this.groupBox3);
-			this.Controls.Add(this.groupBox2);
-			this.Controls.Add(this.groupBox1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.MaximizeBox = false;
-			this.Name = "MainForm";
-			this.Text = "Traveling Salesman Problem using Genetic Algorithms";
-			this.Closing += new System.ComponentModel.CancelEventHandler(this.MainForm_Closing);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox3.ResumeLayout(false);
-			this.ResumeLayout(false);
-
-		}
-		#endregion
-
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main( ) 
-		{
-			Application.Run( new MainForm( ) );
-		}
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(MainForm));
+            groupBox1 = new GroupBox();
+            generateMapButton = new Button();
+            citiesCountBox = new TextBox();
+            label1 = new Label();
+            mapControl = new Chart();
+            groupBox2 = new GroupBox();
+            greedyCrossoverBox = new CheckBox();
+            label5 = new Label();
+            iterationsBox = new TextBox();
+            label4 = new Label();
+            selectionBox = new ComboBox();
+            label3 = new Label();
+            populationSizeBox = new TextBox();
+            label2 = new Label();
+            groupBox3 = new GroupBox();
+            pathLengthBox = new TextBox();
+            label7 = new Label();
+            currentIterationBox = new TextBox();
+            label6 = new Label();
+            startButton = new Button();
+            stopButton = new Button();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            SuspendLayout();
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(generateMapButton);
+            groupBox1.Controls.Add(citiesCountBox);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(mapControl);
+            groupBox1.Location = new System.Drawing.Point(18, 18);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(540, 628);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Map";
+            // 
+            // generateMapButton
+            // 
+            generateMapButton.Location = new System.Drawing.Point(198, 570);
+            generateMapButton.Name = "generateMapButton";
+            generateMapButton.Size = new Size(135, 41);
+            generateMapButton.TabIndex = 3;
+            generateMapButton.Text = "&Generate";
+            generateMapButton.Click += generateMapButton_Click;
+            // 
+            // citiesCountBox
+            // 
+            citiesCountBox.Location = new System.Drawing.Point(90, 572);
+            citiesCountBox.Name = "citiesCountBox";
+            citiesCountBox.Size = new Size(90, 31);
+            citiesCountBox.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.Location = new System.Drawing.Point(18, 576);
+            label1.Name = "label1";
+            label1.Size = new Size(72, 30);
+            label1.TabIndex = 1;
+            label1.Text = "Cities:";
+            // 
+            // mapControl
+            // 
+            mapControl.Location = new System.Drawing.Point(18, 37);
+            mapControl.Name = "mapControl";
+            mapControl.RangeX = (AForge.Range)resources.GetObject("mapControl.RangeX");
+            mapControl.RangeY = (AForge.Range)resources.GetObject("mapControl.RangeY");
+            mapControl.Size = new Size(504, 517);
+            mapControl.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(greedyCrossoverBox);
+            groupBox2.Controls.Add(label5);
+            groupBox2.Controls.Add(iterationsBox);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(selectionBox);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(populationSizeBox);
+            groupBox2.Controls.Add(label2);
+            groupBox2.Location = new System.Drawing.Point(576, 18);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(333, 416);
+            groupBox2.TabIndex = 1;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Settings";
+            // 
+            // greedyCrossoverBox
+            // 
+            greedyCrossoverBox.Location = new System.Drawing.Point(18, 129);
+            greedyCrossoverBox.Name = "greedyCrossoverBox";
+            greedyCrossoverBox.Size = new Size(216, 45);
+            greedyCrossoverBox.TabIndex = 7;
+            greedyCrossoverBox.Text = "Greedy crossover";
+            // 
+            // label5
+            // 
+            label5.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new System.Drawing.Point(225, 369);
+            label5.Name = "label5";
+            label5.Size = new Size(104, 28);
+            label5.TabIndex = 6;
+            label5.Text = "( 0 - inifinity )";
+            // 
+            // iterationsBox
+            // 
+            iterationsBox.Location = new System.Drawing.Point(225, 332);
+            iterationsBox.Name = "iterationsBox";
+            iterationsBox.Size = new Size(90, 31);
+            iterationsBox.TabIndex = 5;
+            // 
+            // label4
+            // 
+            label4.Location = new System.Drawing.Point(18, 336);
+            label4.Name = "label4";
+            label4.Size = new Size(108, 30);
+            label4.TabIndex = 4;
+            label4.Text = "Iterations:";
+            // 
+            // selectionBox
+            // 
+            selectionBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            selectionBox.Items.AddRange(new object[] { "Elite", "Rank", "Roulette" });
+            selectionBox.Location = new System.Drawing.Point(198, 83);
+            selectionBox.Name = "selectionBox";
+            selectionBox.Size = new Size(117, 33);
+            selectionBox.TabIndex = 3;
+            // 
+            // label3
+            // 
+            label3.Location = new System.Drawing.Point(18, 87);
+            label3.Name = "label3";
+            label3.Size = new Size(180, 29);
+            label3.TabIndex = 2;
+            label3.Text = "Selection method:";
+            // 
+            // populationSizeBox
+            // 
+            populationSizeBox.Location = new System.Drawing.Point(225, 37);
+            populationSizeBox.Name = "populationSizeBox";
+            populationSizeBox.Size = new Size(90, 31);
+            populationSizeBox.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.Location = new System.Drawing.Point(18, 41);
+            label2.Name = "label2";
+            label2.Size = new Size(162, 29);
+            label2.TabIndex = 0;
+            label2.Text = "Population size:";
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(pathLengthBox);
+            groupBox3.Controls.Add(label7);
+            groupBox3.Controls.Add(currentIterationBox);
+            groupBox3.Controls.Add(label6);
+            groupBox3.Location = new System.Drawing.Point(576, 443);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(333, 139);
+            groupBox3.TabIndex = 2;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Current iteration";
+            // 
+            // pathLengthBox
+            // 
+            pathLengthBox.Location = new System.Drawing.Point(225, 83);
+            pathLengthBox.Name = "pathLengthBox";
+            pathLengthBox.ReadOnly = true;
+            pathLengthBox.Size = new Size(90, 31);
+            pathLengthBox.TabIndex = 3;
+            // 
+            // label7
+            // 
+            label7.Location = new System.Drawing.Point(18, 87);
+            label7.Name = "label7";
+            label7.Size = new Size(144, 29);
+            label7.TabIndex = 2;
+            label7.Text = "Path length:";
+            // 
+            // currentIterationBox
+            // 
+            currentIterationBox.Location = new System.Drawing.Point(225, 37);
+            currentIterationBox.Name = "currentIterationBox";
+            currentIterationBox.ReadOnly = true;
+            currentIterationBox.Size = new Size(90, 31);
+            currentIterationBox.TabIndex = 1;
+            // 
+            // label6
+            // 
+            label6.Location = new System.Drawing.Point(18, 41);
+            label6.Name = "label6";
+            label6.Size = new Size(90, 29);
+            label6.TabIndex = 0;
+            label6.Text = "Iteration:";
+            // 
+            // startButton
+            // 
+            startButton.Location = new System.Drawing.Point(612, 600);
+            startButton.Name = "startButton";
+            startButton.Size = new Size(135, 42);
+            startButton.TabIndex = 3;
+            startButton.Text = "&Start";
+            startButton.Click += startButton_Click;
+            // 
+            // stopButton
+            // 
+            stopButton.Enabled = false;
+            stopButton.Location = new System.Drawing.Point(774, 600);
+            stopButton.Name = "stopButton";
+            stopButton.Size = new Size(135, 42);
+            stopButton.TabIndex = 4;
+            stopButton.Text = "S&top";
+            stopButton.Click += stopButton_Click;
+            // 
+            // MainForm
+            // 
+            AutoScaleBaseSize = new Size(9, 24);
+            ClientSize = new Size(1005, 682);
+            Controls.Add(stopButton);
+            Controls.Add(startButton);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            Name = "MainForm";
+            Text = "Traveling Salesman Problem using Genetic Algorithms";
+            Closing += MainForm_Closing;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            ResumeLayout(false);
+        }
+        #endregion
 
         // Delegates to enable async calls for setting controls properties
-        private delegate void SetTextCallback( System.Windows.Forms.Control control, string text );
+        private delegate void SetTextCallback(Control control, string text);
 
         // Thread safe updating of control's text property
-        private void SetText( System.Windows.Forms.Control control, string text )
+        private void SetText(Control control, string text)
         {
-            if ( control.InvokeRequired )
+            if (control.InvokeRequired)
             {
-                SetTextCallback d = new SetTextCallback( SetText );
-                Invoke( d, new object[] { control, text } );
+                SetTextCallback d = new SetTextCallback(SetText);
+                Invoke(d, new object[] { control, text });
             }
             else
             {
@@ -375,189 +365,189 @@ namespace TSP
         }
 
         // On main form closing
-		private void MainForm_Closing( object sender, System.ComponentModel.CancelEventArgs e )
-		{
-			// check if worker thread is running
-			if ( ( workerThread != null ) && ( workerThread.IsAlive ) )
-			{
-				needToStop = true;
-                while ( !workerThread.Join( 100 ) )
-                    Application.DoEvents( );
-			}
-		}
+        private void MainForm_Closing(object sender, CancelEventArgs e)
+        {
+            // check if worker thread is running
+            if ((workerThread != null) && (workerThread.IsAlive))
+            {
+                needToStop = true;
+                while (!workerThread.Join(100))
+                    Application.DoEvents();
+            }
+        }
 
-		// Update settings controls
-		private void UpdateSettings( )
-		{
-			citiesCountBox.Text		= citiesCount.ToString( );
-			populationSizeBox.Text	= populationSize.ToString( );
-			iterationsBox.Text		= iterations.ToString( );
-		}
+        // Update settings controls
+        private void UpdateSettings()
+        {
+            citiesCountBox.Text = citiesCount.ToString();
+            populationSizeBox.Text = populationSize.ToString();
+            iterationsBox.Text = iterations.ToString();
+        }
 
         // Delegates to enable async calls for setting controls properties
-        private delegate void EnableCallback( bool enable );
+        private delegate void EnableCallback(bool enable);
 
         // Enable/disale controls (safe for threading)
-        private void EnableControls( bool enable )
-		{
-            if ( InvokeRequired )
+        private void EnableControls(bool enable)
+        {
+            if (InvokeRequired)
             {
-                EnableCallback d = new EnableCallback( EnableControls );
-                Invoke( d, new object[] { enable } );
+                EnableCallback d = new EnableCallback(EnableControls);
+                Invoke(d, new object[] { enable });
             }
             else
             {
-                citiesCountBox.Enabled      = enable;
-                populationSizeBox.Enabled   = enable;
-                iterationsBox.Enabled       = enable;
-                selectionBox.Enabled        = enable;
+                citiesCountBox.Enabled = enable;
+                populationSizeBox.Enabled = enable;
+                iterationsBox.Enabled = enable;
+                selectionBox.Enabled = enable;
 
-                generateMapButton.Enabled   = enable;
+                generateMapButton.Enabled = enable;
 
                 startButton.Enabled = enable;
-                stopButton.Enabled  = !enable;
+                stopButton.Enabled = !enable;
             }
-		}
+        }
 
-		// Generate new map for the Traivaling Salesman problem
-		private void GenerateMap( )
-		{
-			Random rand = new Random( (int) DateTime.Now.Ticks );
+        // Generate new map for the Traivaling Salesman problem
+        private void GenerateMap()
+        {
+            Random rand = new Random((int)DateTime.Now.Ticks);
 
-			// create coordinates array
-			map = new double[citiesCount, 2];
+            // create coordinates array
+            map = new double[citiesCount, 2];
 
-			for ( int i = 0; i < citiesCount; i++ )
-			{
-				map[i, 0] = rand.Next( 1001 );
-				map[i, 1] = rand.Next( 1001 );
-			}
+            for (int i = 0; i < citiesCount; i++)
+            {
+                map[i, 0] = rand.Next(1001);
+                map[i, 1] = rand.Next(1001);
+            }
 
-			// set the map
-			mapControl.UpdateDataSeries( "map", map );
-			// erase path if it is
-			mapControl.UpdateDataSeries( "path", null );
-		}
+            // set the map
+            mapControl.UpdateDataSeries("map", map);
+            // erase path if it is
+            mapControl.UpdateDataSeries("path", null);
+        }
 
-		// On "Generate" button click - generate map
-		private void generateMapButton_Click( object sender, System.EventArgs e )
-		{
-			// get cities count
-			try
-			{
-				citiesCount = Math.Max( 5, Math.Min( 50, int.Parse( citiesCountBox.Text ) ) );
-			}
-			catch
-			{
-				citiesCount = 20;
-			}
-			citiesCountBox.Text = citiesCount.ToString( );
+        // On "Generate" button click - generate map
+        private void generateMapButton_Click(object sender, EventArgs e)
+        {
+            // get cities count
+            try
+            {
+                citiesCount = Math.Max(5, Math.Min(50, int.Parse(citiesCountBox.Text)));
+            }
+            catch
+            {
+                citiesCount = 20;
+            }
+            citiesCountBox.Text = citiesCount.ToString();
 
-			// regenerate map
-			GenerateMap( );
-		}
+            // regenerate map
+            GenerateMap();
+        }
 
-		// On "Start" button click
-		private void startButton_Click(object sender, System.EventArgs e)
-		{
-			// get population size
-			try
-			{
-				populationSize = Math.Max( 10, Math.Min( 100, int.Parse( populationSizeBox.Text ) ) );
-			}
-			catch
-			{
-				populationSize = 40;
-			}
-			// iterations
-			try
-			{
-				iterations = Math.Max( 0, int.Parse( iterationsBox.Text ) );
-			}
-			catch
-			{
-				iterations = 100;
-			}
-			// update settings controls
-			UpdateSettings( );
+        // On "Start" button click
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            // get population size
+            try
+            {
+                populationSize = Math.Max(10, Math.Min(100, int.Parse(populationSizeBox.Text)));
+            }
+            catch
+            {
+                populationSize = 40;
+            }
+            // iterations
+            try
+            {
+                iterations = Math.Max(0, int.Parse(iterationsBox.Text));
+            }
+            catch
+            {
+                iterations = 100;
+            }
+            // update settings controls
+            UpdateSettings();
 
-			selectionMethod = selectionBox.SelectedIndex;
-			greedyCrossover = greedyCrossoverBox.Checked;
+            selectionMethod = selectionBox.SelectedIndex;
+            greedyCrossover = greedyCrossoverBox.Checked;
 
-			// disable all settings controls except "Stop" button
-			EnableControls( false );
+            // disable all settings controls except "Stop" button
+            EnableControls(false);
 
-			// run worker thread
-			needToStop = false;
-			workerThread = new Thread( new ThreadStart( SearchSolution ) );
-			workerThread.Start( );
-		}
+            // run worker thread
+            needToStop = false;
+            workerThread = new Thread(new ThreadStart(SearchSolution));
+            workerThread.Start();
+        }
 
-		// On "Stop" button click
-		private void stopButton_Click( object sender, System.EventArgs e )
-		{
-			// stop worker thread
-            if ( workerThread != null )
+        // On "Stop" button click
+        private void stopButton_Click(object sender, EventArgs e)
+        {
+            // stop worker thread
+            if (workerThread != null)
             {
                 needToStop = true;
-                while ( !workerThread.Join( 100 ) )
-                    Application.DoEvents( );
+                while (!workerThread.Join(100))
+                    Application.DoEvents();
                 workerThread = null;
             }
-		}
+        }
 
-		// Worker thread
-		void SearchSolution( )
-		{
-			// create fitness function
-			TSPFitnessFunction fitnessFunction = new TSPFitnessFunction( map );
-			// create population
-			Population population = new Population( populationSize,
-				( greedyCrossover ) ? new TSPChromosome( map ) : new PermutationChromosome( citiesCount ),
-				fitnessFunction,
-				( selectionMethod == 0 ) ? (ISelectionMethod) new EliteSelection( ) :
-				( selectionMethod == 1 ) ? (ISelectionMethod) new RankSelection( ) :
-				(ISelectionMethod) new RouletteWheelSelection( )
-				);
-			// iterations
-			int i = 1;
+        // Worker thread
+        void SearchSolution()
+        {
+            // create fitness function
+            TSPFitnessFunction fitnessFunction = new TSPFitnessFunction(map);
+            // create population
+            Population population = new Population(populationSize,
+                (greedyCrossover) ? new TSPChromosome(map) : new PermutationChromosome(citiesCount),
+                fitnessFunction,
+                (selectionMethod == 0) ? (ISelectionMethod)new EliteSelection() :
+                (selectionMethod == 1) ? (ISelectionMethod)new RankSelection() :
+                (ISelectionMethod)new RouletteWheelSelection()
+                );
+            // iterations
+            int i = 1;
 
-			// path
-			double[,] path = new double[citiesCount + 1, 2];
+            // path
+            double[,] path = new double[citiesCount + 1, 2];
 
-			// loop
-			while ( !needToStop )
-			{
-				// run one epoch of genetic algorithm
-				population.RunEpoch( );
+            // loop
+            while (!needToStop)
+            {
+                // run one epoch of genetic algorithm
+                population.RunEpoch();
 
-				// display current path
-				ushort[] bestValue = ((PermutationChromosome) population.BestChromosome).Value;
+                // display current path
+                ushort[] bestValue = ((PermutationChromosome)population.BestChromosome).Value;
 
-				for ( int j = 0; j < citiesCount; j++ )
-				{
-					path[j, 0] = map[bestValue[j], 0];
-					path[j, 1] = map[bestValue[j], 1];
-				}
-				path[citiesCount, 0] = map[bestValue[0], 0];
-				path[citiesCount, 1] = map[bestValue[0], 1];
+                for (int j = 0; j < citiesCount; j++)
+                {
+                    path[j, 0] = map[bestValue[j], 0];
+                    path[j, 1] = map[bestValue[j], 1];
+                }
+                path[citiesCount, 0] = map[bestValue[0], 0];
+                path[citiesCount, 1] = map[bestValue[0], 1];
 
-				mapControl.UpdateDataSeries( "path", path );
+                mapControl.UpdateDataSeries("path", path);
 
-				// set current iteration's info
-                SetText( currentIterationBox, i.ToString( ) );
-                SetText( pathLengthBox, fitnessFunction.PathLength( population.BestChromosome ).ToString( ) );
+                // set current iteration's info
+                SetText(currentIterationBox, i.ToString());
+                SetText(pathLengthBox, fitnessFunction.PathLength(population.BestChromosome).ToString());
 
-				// increase current iteration
-				i++;
+                // increase current iteration
+                i++;
 
-				//
-				if ( ( iterations != 0 ) && ( i > iterations ) )
-					break;
-			}
+                //
+                if ((iterations != 0) && (i > iterations))
+                    break;
+            }
 
-			// enable settings controls
-			EnableControls( true );
-		}
-	}
+            // enable settings controls
+            EnableControls(true);
+        }
+    }
 }
