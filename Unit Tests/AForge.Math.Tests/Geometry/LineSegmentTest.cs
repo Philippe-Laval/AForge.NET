@@ -40,13 +40,53 @@ namespace AForge.Math.Geometry.Tests
         // with the segment B1-B2.
         public enum IntersectionType { None, LinesOnly, SegmentA, SegmentB, AllFour };
 
-        
+        [TestCase(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, IntersectionType.LinesOnly)]
+        public void IntersectionPointTest_Throws(float ax1, float ay1, float ax2, float ay2, float bx1, float by1, float bx2, float by2, float ix, float iy, IntersectionType type)
+        {
+            Assert.That(() =>
+            {
+                LineSegment segA = new LineSegment(new Point(ax1, ay1), new Point(ax2, ay2));
+                LineSegment segB = new LineSegment(new Point(bx1, by1), new Point(bx2, by2));
+                Point expectedIntersection = new Point(ix, iy);
+
+                Point? segSeg = segA.GetIntersectionWith(segB);
+                Point? segLine = segA.GetIntersectionWith((Line)segB);
+                Point? lineSeg = ((Line)segA).GetIntersectionWith(segB);
+
+                if (type == IntersectionType.AllFour)
+                {
+                    Assert.AreEqual(expectedIntersection, segSeg);
+                }
+                else
+                {
+                    Assert.AreEqual(null, segSeg);
+                }
+
+                if ((type == IntersectionType.AllFour) || (type == IntersectionType.SegmentA))
+                {
+                    Assert.AreEqual(expectedIntersection, segLine);
+                }
+                else
+                {
+                    Assert.AreEqual(null, segLine);
+                }
+
+                if ((type == IntersectionType.AllFour) || (type == IntersectionType.SegmentB))
+                {
+                    Assert.AreEqual(expectedIntersection, lineSeg);
+                }
+                else
+                {
+                    Assert.AreEqual(null, lineSeg);
+                }
+            }, Throws.TypeOf<ArgumentException>());
+        }
+
         [TestCase( 0, 0, 4, 4, 0, 4, 4, 0, 2, 2, IntersectionType.AllFour )]
         [TestCase( 0, 0, 4, 0, 0, 0, 0, 4, 0, 0, IntersectionType.AllFour )]
         [TestCase( 0, 0, 4, 4, 4, 8, 8, 4, 6, 6, IntersectionType.SegmentB )]
         [TestCase( -4, -4, 0, 0, 4, 0, 8, -4, 2, 2, IntersectionType.LinesOnly )]
         [TestCase( 0, 0, 6, 0, 5, 1, 5, 5, 5, 0, IntersectionType.SegmentA )]
-        [TestCase( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, IntersectionType.LinesOnly, ExpectedException = typeof( ArgumentException ), ExpectedMessage = "Start point of the line cannot be the same as its end point." )]
         [TestCase( 0, 0, 0, 5, 1, 0, 1, 5, 0, 0, IntersectionType.None)]
         public void IntersectionPointTest( float ax1, float ay1, float ax2, float ay2, float bx1, float by1, float bx2, float by2, float ix, float iy, IntersectionType type )
         {

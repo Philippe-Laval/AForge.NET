@@ -77,10 +77,32 @@ namespace AForge.Math.Geometry.Tests
             Assert.AreEqual( expectedAngle, angle, Error );
         }
 
-        
+
+        [TestCase(0, 0, 1, 1, 0, 0, 1, 1, 0, 0, false)]
+        public void GetIntersectionPointTest_Throws(float sx1, float sy1, float ex1, float ey1,
+            float sx2, float sy2, float ex2, float ey2, float xRet, float yRet, bool hasResult)
+        {
+            Assert.That(() =>
+            {
+                Line line1 = Line.FromPoints(new Point(sx1, sy1), new Point(ex1, ey1));
+                Line line2 = Line.FromPoints(new Point(sx2, sy2), new Point(ex2, ey2));
+
+                Point? result = line1.GetIntersectionWith(line2);
+
+                if (hasResult)
+                {
+                    Assert.IsTrue(result == new Point(xRet, yRet));
+                }
+                else
+                {
+                    Assert.AreEqual(null, result);
+                }
+
+            }, Throws.TypeOf<InvalidOperationException>());    
+        }
+
         [TestCase( 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, false )]
         [TestCase( 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, false )]
-        [TestCase( 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, false, ExpectedException = typeof( InvalidOperationException ) )]
         [TestCase( 0, 0, 1, 1, 0, 1, 1, 2, 0, 0, false )]
         [TestCase( 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, true )]
         [TestCase( 0, 0, 1, 0, 0, 1, 1, 2, -1, 0, true )]
