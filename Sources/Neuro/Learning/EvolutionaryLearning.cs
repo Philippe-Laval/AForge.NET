@@ -181,9 +181,9 @@ namespace AForge.Neuro.Learning
 
             // population parameters
             this.populationSize = populationSize;
-            this.chromosomeGenerator = new UniformGenerator( new Range( -1, 1 ) );
+            this.chromosomeGenerator = new UniformGenerator( new AForge.Range( -1, 1 ) );
             this.mutationMultiplierGenerator = new ExponentialGenerator( 1 );
-            this.mutationAdditionGenerator = new UniformGenerator( new Range( -0.5f, 0.5f ) );
+            this.mutationAdditionGenerator = new UniformGenerator( new AForge.Range( -0.5f, 0.5f ) );
             this.selectionMethod = new EliteSelection( );
             this.crossOverRate = 0.75;
             this.mutationRate = 0.25;

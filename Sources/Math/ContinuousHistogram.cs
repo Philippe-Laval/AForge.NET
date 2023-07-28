@@ -44,7 +44,7 @@ namespace AForge.Math
     public class ContinuousHistogram
     {
         private int[] values;
-        private Range range;
+        private AForge.Range range;
 
         private float mean;
         private float stdDev;
@@ -66,7 +66,7 @@ namespace AForge.Math
         /// Range of random values.
         /// </summary>
         /// 
-        public Range Range
+        public AForge.Range Range
         {
             get { return range; }
         }
@@ -190,7 +190,7 @@ namespace AForge.Math
         /// description for more information).
         /// </remarks>
         /// 
-        public ContinuousHistogram( int[] values, Range range )
+        public ContinuousHistogram( int[] values, AForge.Range range )
         {
             this.values = values;
             this.range  = range;
@@ -221,7 +221,7 @@ namespace AForge.Math
         /// </code>
         /// </remarks>
         /// 
-        public Range GetRange( float percent )
+        public AForge.Range GetRange( float percent )
         {
             int min, max, hits;
             int h = (int) ( total * ( percent + ( 1 - percent ) / 2 ) );
@@ -243,7 +243,7 @@ namespace AForge.Math
                     break;
             }
             // return range between left and right boundaries
-            return new Range(
+            return new AForge.Range(
                 ( (float) min / nM1 ) * range.Length + range.Min,
                 ( (float) max / nM1 ) * range.Length + range.Min );
         }

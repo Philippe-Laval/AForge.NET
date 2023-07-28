@@ -10,6 +10,7 @@ namespace AForge.Imaging
 {
     using System;
     using System.Drawing;
+    using AForge;
 
     /// <summary>
     /// Block match class keeps information about found block match. The class is

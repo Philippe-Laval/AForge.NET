@@ -45,10 +45,10 @@ namespace AForge.Imaging.Filters
     /// 
     public class HSLLinear : BaseInPlacePartialFilter
     {
-        private Range inLuminance   = new Range( 0.0f, 1.0f );
-        private Range inSaturation  = new Range( 0.0f, 1.0f );
-        private Range outLuminance  = new Range( 0.0f, 1.0f );
-        private Range outSaturation = new Range( 0.0f, 1.0f );
+        private AForge.Range inLuminance   = new AForge.Range( 0.0f, 1.0f );
+        private AForge.Range inSaturation  = new AForge.Range( 0.0f, 1.0f );
+        private AForge.Range outLuminance  = new AForge.Range( 0.0f, 1.0f );
+        private AForge.Range outSaturation = new AForge.Range( 0.0f, 1.0f );
 
         #region Public Propertis
 
@@ -58,7 +58,7 @@ namespace AForge.Imaging.Filters
         /// 
         /// <remarks>Luminance component is measured in the range of [0, 1].</remarks>
         /// 
-        public Range InLuminance
+        public AForge.Range InLuminance
         {
             get { return inLuminance; }
             set { inLuminance = value; }
@@ -70,7 +70,7 @@ namespace AForge.Imaging.Filters
         /// 
         /// <remarks>Luminance component is measured in the range of [0, 1].</remarks>
         /// 
-        public Range OutLuminance
+        public AForge.Range OutLuminance
         {
             get { return outLuminance; }
             set { outLuminance = value; }
@@ -82,7 +82,7 @@ namespace AForge.Imaging.Filters
         /// 
         /// <remarks>Saturation component is measured in the range of [0, 1].</remarks>
         /// 
-        public Range InSaturation
+        public AForge.Range InSaturation
         {
             get { return inSaturation; }
             set { inSaturation = value; }
@@ -94,7 +94,7 @@ namespace AForge.Imaging.Filters
         /// 
         /// <remarks>Saturation component is measured in the range of [0, 1].</remarks>
         /// 
-        public Range OutSaturation
+        public AForge.Range OutSaturation
         {
             get { return outSaturation; }
             set { outSaturation = value; }

@@ -45,13 +45,13 @@ namespace AForge.Imaging.Filters
     /// 
     public class YCbCrLinear : BaseInPlacePartialFilter
     {
-        private Range inY  = new Range(  0.0f, 1.0f );
-        private Range inCb = new Range( -0.5f, 0.5f );
-        private Range inCr = new Range( -0.5f, 0.5f );
+        private AForge.Range inY  = new AForge.Range(  0.0f, 1.0f );
+        private AForge.Range inCb = new AForge.Range( -0.5f, 0.5f );
+        private AForge.Range inCr = new AForge.Range( -0.5f, 0.5f );
 
-        private Range outY  = new Range(  0.0f, 1.0f );
-        private Range outCb = new Range( -0.5f, 0.5f );
-        private Range outCr = new Range( -0.5f, 0.5f );
+        private AForge.Range outY  = new AForge.Range(  0.0f, 1.0f );
+        private AForge.Range outCb = new AForge.Range( -0.5f, 0.5f );
+        private AForge.Range outCr = new AForge.Range( -0.5f, 0.5f );
 
         #region Public Propertis
 
@@ -61,7 +61,7 @@ namespace AForge.Imaging.Filters
         /// 
         /// <remarks>Y component is measured in the range of [0, 1].</remarks>
         ///
-        public Range InY
+        public AForge.Range InY
         {
             get { return inY; }
             set { inY = value; }
@@ -73,7 +73,7 @@ namespace AForge.Imaging.Filters
         /// 
         /// <remarks>Cb component is measured in the range of [-0.5, 0.5].</remarks>
         ///
-        public Range InCb
+        public AForge.Range InCb
         {
             get { return inCb; }
             set { inCb = value; }
@@ -85,7 +85,7 @@ namespace AForge.Imaging.Filters
         /// 
         /// <remarks>Cr component is measured in the range of [-0.5, 0.5].</remarks>
         ///
-        public Range InCr
+        public AForge.Range InCr
         {
             get { return inCr; }
             set { inCr = value; }
@@ -97,7 +97,7 @@ namespace AForge.Imaging.Filters
         /// 
         /// <remarks>Y component is measured in the range of [0, 1].</remarks>
         ///
-        public Range OutY
+        public AForge.Range OutY
         {
             get { return outY; }
             set { outY = value; }
@@ -109,7 +109,7 @@ namespace AForge.Imaging.Filters
         /// 
         /// <remarks>Cb component is measured in the range of [-0.5, 0.5].</remarks>
         ///
-        public Range OutCb
+        public AForge.Range OutCb
         {
             get { return outCb; }
             set { outCb = value; }
@@ -121,7 +121,7 @@ namespace AForge.Imaging.Filters
         /// 
         /// <remarks>Cr component is measured in the range of [-0.5, 0.5].</remarks>
         ///
-        public Range OutCr
+        public AForge.Range OutCr
         {
             get { return outCr; }
             set { outCr = value; }
