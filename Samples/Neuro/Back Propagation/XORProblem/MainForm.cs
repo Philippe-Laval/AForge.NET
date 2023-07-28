@@ -347,15 +347,6 @@ namespace XORProblem
 		}
 		#endregion
 
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main( ) 
-		{
-			Application.Run( new MainForm( ) );
-		}
-
         // Delegates to enable async calls for setting controls properties
         private delegate void SetTextCallback( System.Windows.Forms.Control control, string text );
 
@@ -590,7 +581,7 @@ namespace XORProblem
 					errors[i, 1] = (double) errorsList[i];
 				}
 
-				errorChart.RangeX = new Range( 0, errorsList.Count - 1 );
+				errorChart.RangeX = new AForge.Range( 0, errorsList.Count - 1 );
 				errorChart.UpdateDataSeries( "error", errors );
 			}
 			catch ( IOException )
