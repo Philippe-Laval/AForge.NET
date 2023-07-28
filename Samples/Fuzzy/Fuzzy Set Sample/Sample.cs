@@ -26,7 +26,7 @@ namespace FuzzySetSample
         {
             InitializeComponent( );
 
-            chart.RangeX = new Range( 0, 50 );
+            chart.RangeX = new AForge.Range( 0, 50 );
             chart.AddDataSeries( "COLD", Color.CornflowerBlue, Chart.SeriesType.Line, 3, true );
             chart.AddDataSeries( "COOL", Color.LightBlue, Chart.SeriesType.Line, 3, true );
             chart.AddDataSeries( "WARM", Color.LightCoral, Chart.SeriesType.Line, 3, true );
