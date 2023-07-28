@@ -276,14 +276,7 @@ namespace Color
 		}
 		#endregion
 
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main( ) 
-		{
-			Application.Run( new MainForm( ) );
-		}
+		
 
         // Delegates to enable async calls for setting controls properties
         private delegate void SetTextCallback( System.Windows.Forms.Control control, string text );
@@ -331,7 +324,7 @@ namespace Color
 		// Radnomize weights of network
 		private void RandomizeNetwork( )
 		{
-			Neuron.RandRange = new Range( 0, 255 );
+			Neuron.RandRange = new AForge.Range( 0, 255 );
 
 			// randomize net
 			network.Randomize( );
