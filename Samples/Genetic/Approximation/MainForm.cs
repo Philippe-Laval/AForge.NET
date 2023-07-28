@@ -18,6 +18,7 @@ using System.Threading;
 using AForge;
 using AForge.Genetic;
 using AForge.Controls;
+using System.Globalization;
 
 namespace Approximation
 {
@@ -439,15 +440,6 @@ namespace Approximation
 		}
 		#endregion
 
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main() 
-		{
-			Application.Run( new MainForm( ) );
-		}
-
         // Delegates to enable async calls for setting controls properties
         private delegate void SetTextCallback( System.Windows.Forms.Control control, string text );
 
@@ -510,8 +502,8 @@ namespace Approximation
 						if ( strs.Length == 1 )
 							strs = str.Split( ',' );
 						// parse X
-						tempData[i, 0] = float.Parse( strs[0] );
-						tempData[i, 1] = float.Parse( strs[1] );
+						tempData[i, 0] = float.Parse( strs[0], CultureInfo.InvariantCulture);
+						tempData[i, 1] = float.Parse( strs[1], CultureInfo.InvariantCulture);
 
 						// search for min value
 						if ( tempData[i, 0] < minX )
@@ -541,7 +533,7 @@ namespace Approximation
 
 				// update list and chart
 				UpdateDataListView( );
-				chart.RangeX = new Range( minX, maxX );
+				chart.RangeX = new AForge.Range( minX, maxX );
 				chart.UpdateDataSeries( "data", data );
 				chart.UpdateDataSeries( "solution", null );
 				// enable "Start" button
