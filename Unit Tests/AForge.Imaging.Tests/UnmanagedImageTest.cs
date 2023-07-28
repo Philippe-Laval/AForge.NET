@@ -123,8 +123,8 @@ namespace AForge.Imaging.Tests
                 Assert.AreEqual( 130, horizontalValues[i + 2] );
 
                 Assert.AreEqual( 0, horizontalUValues[i] );
-                Assert.AreEqual( 0, horizontalUValues[i + 1] );
-                Assert.AreEqual( 0, horizontalUValues[i + 2] );
+                Assert.That(horizontalUValues[i + 1], Is.EqualTo(0));
+                Assert.That( horizontalUValues[i + 2], Is.EqualTo(0));
 
                 Assert.AreEqual( 0, horizontalDValues[i] );
                 Assert.AreEqual( 0, horizontalDValues[i + 1] );

@@ -70,8 +70,8 @@ namespace AForge.Genetic
         }
 
         // optimization ranges
-        private Range	rangeX = new Range( 0, 1 );
-        private Range	rangeY = new Range( 0, 1 );
+        private AForge.Range	rangeX = new AForge.Range( 0, 1 );
+        private AForge.Range	rangeY = new AForge.Range( 0, 1 );
         // optimization mode
         private Modes mode = Modes.Maximization;
 
@@ -83,7 +83,7 @@ namespace AForge.Genetic
         /// be searched in this range only.
         /// </remarks>
         /// 
-        public Range RangeX
+        public AForge.Range RangeX
         {
             get { return rangeX; }
             set { rangeX = value; }
@@ -97,7 +97,7 @@ namespace AForge.Genetic
         /// be searched in this range only.
         /// </remarks>
         /// 
-        public Range RangeY
+        public AForge.Range RangeY
         {
             get { return rangeY; }
             set { rangeY = value; }
@@ -122,7 +122,7 @@ namespace AForge.Genetic
         /// <param name="rangeX">Specifies X variable's range.</param>
         /// <param name="rangeY">Specifies Y variable's range.</param>
         ///
-        public OptimizationFunction2D( Range rangeX, Range rangeY )
+        public OptimizationFunction2D(AForge.Range rangeX, AForge.Range rangeY )
         {
             this.rangeX = rangeX;
             this.rangeY = rangeY;

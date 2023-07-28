@@ -46,9 +46,9 @@ namespace AForge.Imaging.Filters
     /// 
     public class YCbCrFiltering : BaseInPlacePartialFilter
     {
-        private Range yRange  = new Range( 0.0f, 1.0f );
-        private Range cbRange = new Range( -0.5f, 0.5f );
-        private Range crRange = new Range( -0.5f, 0.5f );
+        private AForge.Range yRange  = new AForge.Range( 0.0f, 1.0f );
+        private AForge.Range cbRange = new AForge.Range( -0.5f, 0.5f );
+        private AForge.Range crRange = new AForge.Range( -0.5f, 0.5f );
 
         private float fillY  = 0.0f;
         private float fillCb = 0.0f;
@@ -76,7 +76,7 @@ namespace AForge.Imaging.Filters
         /// Range of Y component, [0, 1].
         /// </summary>
         /// 
-        public Range Y
+        public AForge.Range Y
         {
             get { return yRange; }
             set { yRange = value; }
@@ -86,7 +86,7 @@ namespace AForge.Imaging.Filters
         /// Range of Cb component, [-0.5, 0.5].
         /// </summary>
         /// 
-        public Range Cb
+        public AForge.Range Cb
         {
             get { return cbRange; }
             set { cbRange = value; }
@@ -96,7 +96,7 @@ namespace AForge.Imaging.Filters
         /// Range of Cr component, [-0.5, 0.5].
         /// </summary>
         /// 
-        public Range Cr
+        public AForge.Range Cr
         {
             get { return crRange; }
             set { crRange = value; }
@@ -196,7 +196,7 @@ namespace AForge.Imaging.Filters
         /// <param name="cbRange">Range of Cb component.</param>
         /// <param name="crRange">Range of Cr component.</param>
         /// 
-        public YCbCrFiltering( Range yRange, Range cbRange, Range crRange ) :
+        public YCbCrFiltering(AForge.Range yRange, AForge.Range cbRange, AForge.Range crRange ) :
             this( )
         {
             this.yRange  = yRange;

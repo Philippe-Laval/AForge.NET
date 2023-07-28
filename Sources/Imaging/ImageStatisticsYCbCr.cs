@@ -430,13 +430,13 @@ namespace AForge.Imaging
             }
 
             // create histograms
-            yHistogram  = new ContinuousHistogram( yhisto,  new Range(  0.0f, 1.0f ) );
-            cbHistogram = new ContinuousHistogram( cbhisto, new Range( -0.5f, 0.5f ) );
-            crHistogram = new ContinuousHistogram( crhisto, new Range( -0.5f, 0.5f ) );
+            yHistogram  = new ContinuousHistogram( yhisto,  new AForge.Range(  0.0f, 1.0f ) );
+            cbHistogram = new ContinuousHistogram( cbhisto, new AForge.Range( -0.5f, 0.5f ) );
+            crHistogram = new ContinuousHistogram( crhisto, new AForge.Range( -0.5f, 0.5f ) );
 
-            yHistogramWithoutBlack  = new ContinuousHistogram( yhistoWB,  new Range(  0.0f, 1.0f ) );
-            cbHistogramWithoutBlack = new ContinuousHistogram( cbhistoWB, new Range( -0.5f, 0.5f ) );
-            crHistogramWithoutBlack = new ContinuousHistogram( crhistoWB, new Range( -0.5f, 0.5f ) );
+            yHistogramWithoutBlack  = new ContinuousHistogram( yhistoWB,  new AForge.Range(  0.0f, 1.0f ) );
+            cbHistogramWithoutBlack = new ContinuousHistogram( cbhistoWB, new AForge.Range( -0.5f, 0.5f ) );
+            crHistogramWithoutBlack = new ContinuousHistogram( crhistoWB, new AForge.Range( -0.5f, 0.5f ) );
         }
 
         // Check pixel format of the source image

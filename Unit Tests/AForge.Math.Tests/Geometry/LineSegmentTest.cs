@@ -16,7 +16,7 @@ namespace AForge.Math.Geometry.Tests
         {
             LineSegment segment = new LineSegment( new Point( sx, sy ), new Point( ex, ey ) );
 
-            Assert.AreEqual( expectedResult, segment.Length );
+            Assert.That( segment.Length, Is.EqualTo(expectedResult));
         }
 
         
@@ -32,7 +32,7 @@ namespace AForge.Math.Geometry.Tests
             Point pt2 = new Point( x2, y2 );
             LineSegment segment = new LineSegment( pt1, pt2 );
 
-            Assert.AreEqual( expectedDistance, segment.DistanceToPoint( pt ) );
+            Assert.That( segment.DistanceToPoint( pt ), Is.EqualTo(expectedDistance));
         }
 
         // Denotes which versions of the test are supposed to return non-null values:
@@ -55,29 +55,29 @@ namespace AForge.Math.Geometry.Tests
 
                 if (type == IntersectionType.AllFour)
                 {
-                    Assert.AreEqual(expectedIntersection, segSeg);
+                    Assert.That(segSeg, Is.EqualTo(expectedIntersection));
                 }
                 else
                 {
-                    Assert.AreEqual(null, segSeg);
+                    Assert.That(segSeg, Is.EqualTo(null));
                 }
 
                 if ((type == IntersectionType.AllFour) || (type == IntersectionType.SegmentA))
                 {
-                    Assert.AreEqual(expectedIntersection, segLine);
+                    Assert.That(segLine, Is.EqualTo(expectedIntersection));
                 }
                 else
                 {
-                    Assert.AreEqual(null, segLine);
+                    Assert.That(segLine, Is.EqualTo(null));
                 }
 
                 if ((type == IntersectionType.AllFour) || (type == IntersectionType.SegmentB))
                 {
-                    Assert.AreEqual(expectedIntersection, lineSeg);
+                    Assert.That(lineSeg, Is.EqualTo(expectedIntersection));
                 }
                 else
                 {
-                    Assert.AreEqual(null, lineSeg);
+                    Assert.That(lineSeg, Is.EqualTo(null));
                 }
             }, Throws.TypeOf<ArgumentException>());
         }
@@ -102,29 +102,29 @@ namespace AForge.Math.Geometry.Tests
 
                 if ( type == IntersectionType.AllFour )
                 {
-                    Assert.AreEqual( expectedIntersection, segSeg );
+                    Assert.That( segSeg, Is.EqualTo(expectedIntersection));
                 }
                 else
                 {
-                    Assert.AreEqual( null, segSeg );
+                    Assert.That( segSeg, Is.EqualTo(null));
                 }
 
                 if ( ( type == IntersectionType.AllFour ) || ( type == IntersectionType.SegmentA ) )
                 {
-                    Assert.AreEqual( expectedIntersection, segLine );
+                    Assert.That( segLine, Is.EqualTo(expectedIntersection));
                 }
                 else
                 {
-                    Assert.AreEqual( null, segLine );
+                    Assert.That(segLine, Is.EqualTo(null));
                 }
 
                 if ( ( type == IntersectionType.AllFour ) || ( type == IntersectionType.SegmentB ) )
                 {
-                    Assert.AreEqual( expectedIntersection, lineSeg );
+                    Assert.That( lineSeg, Is.EqualTo(expectedIntersection));
                 }
                 else
                 {
-                    Assert.AreEqual( null, lineSeg );
+                    Assert.That( lineSeg, Is.EqualTo(null));
                 }
             } );
 
@@ -132,11 +132,11 @@ namespace AForge.Math.Geometry.Tests
 
             if ( type != IntersectionType.None )
             {
-                Assert.AreEqual( expectedIntersection, lineLine );
+                Assert.That( lineLine, Is.EqualTo(expectedIntersection));
             }
             else
             {
-                Assert.AreEqual( null, lineLine );
+                Assert.That( lineLine, Is.EqualTo(null));
             }
         }
 
@@ -150,14 +150,14 @@ namespace AForge.Math.Geometry.Tests
             LineSegment segB = new LineSegment( new Point( bx1, by1 ), new Point( bx2, by2 ) );
 
             // are we really parallel?
-            Assert.AreEqual( null, ( (Line) segA ).GetIntersectionWith( (Line) segB ) );
+            Assert.That( ( (Line) segA ).GetIntersectionWith( (Line) segB ), Is.EqualTo(null));
 
-            Assert.AreEqual( null, segA.GetIntersectionWith( (Line) segB ) );
-            Assert.AreEqual( null, ( (Line) segA ).GetIntersectionWith( segB ) );
-            Assert.AreEqual( null, segB.GetIntersectionWith( (Line) segA ) );
-            Assert.AreEqual( null, ( (Line) segB ).GetIntersectionWith( segA ) );
-            Assert.AreEqual( null, segB.GetIntersectionWith( segA ) );
-            Assert.AreEqual( null, segA.GetIntersectionWith( segB ) );
+            Assert.That( segA.GetIntersectionWith( (Line) segB ), Is.EqualTo(null));
+            Assert.That( ( (Line) segA ).GetIntersectionWith( segB ), Is.EqualTo(null));
+            Assert.That( segB.GetIntersectionWith( (Line) segA ), Is.EqualTo(null));
+            Assert.That( ( (Line) segB ).GetIntersectionWith( segA ), Is.EqualTo(null));
+            Assert.That( segB.GetIntersectionWith( segA ), Is.EqualTo(null));
+            Assert.That( segA.GetIntersectionWith( segB ), Is.EqualTo(null));
         }
 
         

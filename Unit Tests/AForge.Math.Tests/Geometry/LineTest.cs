@@ -56,7 +56,7 @@ namespace AForge.Math.Geometry.Tests
         {
             Line line = Line.FromPoints( new Point( sx, sy ), new Point( ex, ey ) );
 
-            Assert.AreEqual( expectedResult, line.IsHorizontal );
+            Assert.That( line.IsHorizontal, Is.EqualTo(expectedResult));
             Assert.AreEqual( expectedSlope, line.Slope );
             Assert.AreEqual( expectedIntercept, line.Intercept );
         }
@@ -74,7 +74,7 @@ namespace AForge.Math.Geometry.Tests
 
             float angle = line1.GetAngleBetweenLines( line2 );
 
-            Assert.AreEqual( expectedAngle, angle, Error );
+            Assert.That( angle, Is.EqualTo(expectedAngle).Within(Error));
         }
 
 
@@ -91,11 +91,11 @@ namespace AForge.Math.Geometry.Tests
 
                 if (hasResult)
                 {
-                    Assert.IsTrue(result == new Point(xRet, yRet));
+                    Assert.That(result == new Point(xRet, yRet), Is.True);
                 }
                 else
                 {
-                    Assert.AreEqual(null, result);
+                    Assert.That(result, Is.EqualTo(null));
                 }
 
             }, Throws.TypeOf<InvalidOperationException>());    
@@ -119,11 +119,11 @@ namespace AForge.Math.Geometry.Tests
 
             if ( hasResult )
             {
-                Assert.IsTrue( result == new Point( xRet, yRet ) );
+                Assert.That( result == new Point( xRet, yRet ), Is.True);
             }
             else
             {
-                Assert.AreEqual( null, result );
+                Assert.That( result, Is.EqualTo(null));
             }
         }
 
@@ -140,7 +140,7 @@ namespace AForge.Math.Geometry.Tests
             Point pt2 = new Point( x2, y2 );
             Line line = Line.FromPoints( pt1, pt2 );
 
-            Assert.AreEqual( expectedDistance, line.DistanceToPoint( pt ), Error );
+            Assert.That( line.DistanceToPoint( pt ), Is.EqualTo(expectedDistance).Within(Error));
         }
     }
 }

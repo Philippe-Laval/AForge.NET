@@ -18,7 +18,6 @@ using System.Threading;
 using AForge;
 using AForge.Genetic;
 using AForge.Controls;
-using System.Globalization;
 
 namespace TimeSeries
 {
@@ -129,433 +128,430 @@ namespace TimeSeries
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataList = new System.Windows.Forms.ListView();
-            this.yColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.estimatedYColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.loadDataButton = new System.Windows.Forms.Button();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chart = new AForge.Controls.Chart();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.moreSettingsButton = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.iterationsBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.predictionSizeBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.windowSizeBox = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.geneticMethodBox = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.functionsSetBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.selectionBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.populationSizeBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.startButton = new System.Windows.Forms.Button();
-            this.stopButton = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.currentPredictionErrorBox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.currentLearningErrorBox = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.currentIterationBox = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.solutionBox = new System.Windows.Forms.TextBox();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dataList);
-            this.groupBox1.Controls.Add(this.loadDataButton);
-            this.groupBox1.Location = new System.Drawing.Point(16, 15);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(288, 555);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Data";
-            // 
-            // dataList
-            // 
-            this.dataList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.yColumnHeader,
-            this.estimatedYColumnHeader});
-            this.dataList.FullRowSelect = true;
-            this.dataList.GridLines = true;
-            this.dataList.HideSelection = false;
-            this.dataList.Location = new System.Drawing.Point(16, 29);
-            this.dataList.Name = "dataList";
-            this.dataList.Size = new System.Drawing.Size(256, 461);
-            this.dataList.TabIndex = 1;
-            this.dataList.UseCompatibleStateImageBehavior = false;
-            this.dataList.View = System.Windows.Forms.View.Details;
-            // 
-            // yColumnHeader
-            // 
-            this.yColumnHeader.Text = "Y:Real";
-            this.yColumnHeader.Width = 70;
-            // 
-            // estimatedYColumnHeader
-            // 
-            this.estimatedYColumnHeader.Text = "Y:Estimated";
-            this.estimatedYColumnHeader.Width = 70;
-            // 
-            // loadDataButton
-            // 
-            this.loadDataButton.Location = new System.Drawing.Point(16, 504);
-            this.loadDataButton.Name = "loadDataButton";
-            this.loadDataButton.Size = new System.Drawing.Size(120, 34);
-            this.loadDataButton.TabIndex = 1;
-            this.loadDataButton.Text = "&Load";
-            this.loadDataButton.Click += new System.EventHandler(this.loadDataButton_Click);
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.Filter = "CSV (Comma delimited) (*.csv)|*.csv";
-            this.openFileDialog.Title = "Select data file";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.chart);
-            this.groupBox2.Location = new System.Drawing.Point(320, 15);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(480, 555);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Function";
-            // 
-            // chart
-            // 
-            this.chart.Location = new System.Drawing.Point(16, 29);
-            this.chart.Name = "chart";
-            this.chart.RangeX = ((AForge.Range)(resources.GetObject("chart.RangeX")));
-            this.chart.RangeY = ((AForge.Range)(resources.GetObject("chart.RangeY")));
-            this.chart.Size = new System.Drawing.Size(448, 512);
-            this.chart.TabIndex = 0;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.moreSettingsButton);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.iterationsBox);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.predictionSizeBox);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.windowSizeBox);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.geneticMethodBox);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.functionsSetBox);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.selectionBox);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.populationSizeBox);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(816, 15);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(296, 350);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Settings";
-            // 
-            // moreSettingsButton
-            // 
-            this.moreSettingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.moreSettingsButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.moreSettingsButton.Location = new System.Drawing.Point(16, 322);
-            this.moreSettingsButton.Name = "moreSettingsButton";
-            this.moreSettingsButton.Size = new System.Drawing.Size(40, 21);
-            this.moreSettingsButton.TabIndex = 17;
-            this.moreSettingsButton.Text = ">>";
-            this.toolTip.SetToolTip(this.moreSettingsButton, "More settings");
-            this.moreSettingsButton.Click += new System.EventHandler(this.moreSettingsButton_Click);
-            // 
-            // label10
-            // 
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(200, 322);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 20);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "( 0 - inifinity )";
-            // 
-            // iterationsBox
-            // 
-            this.iterationsBox.Location = new System.Drawing.Point(200, 292);
-            this.iterationsBox.Name = "iterationsBox";
-            this.iterationsBox.Size = new System.Drawing.Size(80, 26);
-            this.iterationsBox.TabIndex = 15;
-            // 
-            // label9
-            // 
-            this.label9.Location = new System.Drawing.Point(16, 295);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(112, 24);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "Iterations:";
-            // 
-            // label8
-            // 
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label8.Location = new System.Drawing.Point(16, 278);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(264, 3);
-            this.label8.TabIndex = 13;
-            // 
-            // predictionSizeBox
-            // 
-            this.predictionSizeBox.Location = new System.Drawing.Point(200, 234);
-            this.predictionSizeBox.Name = "predictionSizeBox";
-            this.predictionSizeBox.Size = new System.Drawing.Size(80, 26);
-            this.predictionSizeBox.TabIndex = 12;
-            this.predictionSizeBox.TextChanged += new System.EventHandler(this.predictionSizeBox_TextChanged);
-            // 
-            // label7
-            // 
-            this.label7.Location = new System.Drawing.Point(16, 237);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(144, 23);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Prediction size:";
-            // 
-            // windowSizeBox
-            // 
-            this.windowSizeBox.Location = new System.Drawing.Point(200, 197);
-            this.windowSizeBox.Name = "windowSizeBox";
-            this.windowSizeBox.Size = new System.Drawing.Size(80, 26);
-            this.windowSizeBox.TabIndex = 10;
-            this.windowSizeBox.TextChanged += new System.EventHandler(this.windowSizeBox_TextChanged);
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(16, 200);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 24);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Window size:";
-            // 
-            // label5
-            // 
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label5.Location = new System.Drawing.Point(16, 183);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(264, 3);
-            this.label5.TabIndex = 8;
-            // 
-            // geneticMethodBox
-            // 
-            this.geneticMethodBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.geneticMethodBox.Items.AddRange(new object[] {
-            "GP",
-            "GEP"});
-            this.geneticMethodBox.Location = new System.Drawing.Point(176, 139);
-            this.geneticMethodBox.Name = "geneticMethodBox";
-            this.geneticMethodBox.Size = new System.Drawing.Size(104, 28);
-            this.geneticMethodBox.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(16, 142);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(160, 23);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Genetic method:";
-            // 
-            // functionsSetBox
-            // 
-            this.functionsSetBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.functionsSetBox.Items.AddRange(new object[] {
-            "Simple",
-            "Extended"});
-            this.functionsSetBox.Location = new System.Drawing.Point(176, 102);
-            this.functionsSetBox.Name = "functionsSetBox";
-            this.functionsSetBox.Size = new System.Drawing.Size(104, 28);
-            this.functionsSetBox.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(16, 105);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(160, 24);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Function set:";
-            // 
-            // selectionBox
-            // 
-            this.selectionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.selectionBox.Items.AddRange(new object[] {
-            "Elite",
-            "Rank",
-            "Roulette"});
-            this.selectionBox.Location = new System.Drawing.Point(176, 66);
-            this.selectionBox.Name = "selectionBox";
-            this.selectionBox.Size = new System.Drawing.Size(104, 28);
-            this.selectionBox.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(16, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 23);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Selection method:";
-            // 
-            // populationSizeBox
-            // 
-            this.populationSizeBox.Location = new System.Drawing.Point(200, 29);
-            this.populationSizeBox.Name = "populationSizeBox";
-            this.populationSizeBox.Size = new System.Drawing.Size(80, 26);
-            this.populationSizeBox.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(16, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Population size:";
-            // 
-            // startButton
-            // 
-            this.startButton.Enabled = false;
-            this.startButton.Location = new System.Drawing.Point(856, 532);
-            this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(120, 34);
-            this.startButton.TabIndex = 3;
-            this.startButton.Text = "&Start";
-            this.startButton.Click += new System.EventHandler(this.startButton_Click);
-            // 
-            // stopButton
-            // 
-            this.stopButton.Enabled = false;
-            this.stopButton.Location = new System.Drawing.Point(992, 532);
-            this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(120, 34);
-            this.stopButton.TabIndex = 4;
-            this.stopButton.Text = "S&top";
-            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.currentPredictionErrorBox);
-            this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.currentLearningErrorBox);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.currentIterationBox);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Location = new System.Drawing.Point(816, 373);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(296, 146);
-            this.groupBox4.TabIndex = 5;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Current iteration:";
-            // 
-            // currentPredictionErrorBox
-            // 
-            this.currentPredictionErrorBox.Location = new System.Drawing.Point(200, 102);
-            this.currentPredictionErrorBox.Name = "currentPredictionErrorBox";
-            this.currentPredictionErrorBox.ReadOnly = true;
-            this.currentPredictionErrorBox.Size = new System.Drawing.Size(80, 26);
-            this.currentPredictionErrorBox.TabIndex = 5;
-            // 
-            // label13
-            // 
-            this.label13.Location = new System.Drawing.Point(16, 105);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(160, 24);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "Prediction error:";
-            // 
-            // currentLearningErrorBox
-            // 
-            this.currentLearningErrorBox.Location = new System.Drawing.Point(200, 66);
-            this.currentLearningErrorBox.Name = "currentLearningErrorBox";
-            this.currentLearningErrorBox.ReadOnly = true;
-            this.currentLearningErrorBox.Size = new System.Drawing.Size(80, 26);
-            this.currentLearningErrorBox.TabIndex = 3;
-            // 
-            // label12
-            // 
-            this.label12.Location = new System.Drawing.Point(16, 69);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(128, 23);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Learning error:";
-            // 
-            // currentIterationBox
-            // 
-            this.currentIterationBox.Location = new System.Drawing.Point(200, 29);
-            this.currentIterationBox.Name = "currentIterationBox";
-            this.currentIterationBox.ReadOnly = true;
-            this.currentIterationBox.Size = new System.Drawing.Size(80, 26);
-            this.currentIterationBox.TabIndex = 1;
-            // 
-            // label11
-            // 
-            this.label11.Location = new System.Drawing.Point(16, 32);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(112, 24);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Iteration:";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.solutionBox);
-            this.groupBox5.Location = new System.Drawing.Point(16, 577);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1096, 73);
-            this.groupBox5.TabIndex = 6;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Solution";
-            // 
-            // solutionBox
-            // 
-            this.solutionBox.Location = new System.Drawing.Point(16, 29);
-            this.solutionBox.Name = "solutionBox";
-            this.solutionBox.ReadOnly = true;
-            this.solutionBox.Size = new System.Drawing.Size(1064, 26);
-            this.solutionBox.TabIndex = 0;
-            // 
-            // MainForm
-            // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(8, 19);
-            this.ClientSize = new System.Drawing.Size(1174, 705);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.stopButton);
-            this.Controls.Add(this.startButton);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "MainForm";
-            this.Text = "Time Series Prediction using Genetic Programming and Gene Expression Programming";
-            this.Closing += new System.ComponentModel.CancelEventHandler(this.MainForm_Closing);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.ResumeLayout(false);
+			this.components = new System.ComponentModel.Container();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.dataList = new System.Windows.Forms.ListView();
+			this.yColumnHeader = new System.Windows.Forms.ColumnHeader();
+			this.estimatedYColumnHeader = new System.Windows.Forms.ColumnHeader();
+			this.loadDataButton = new System.Windows.Forms.Button();
+			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.chart = new AForge.Controls.Chart();
+			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.moreSettingsButton = new System.Windows.Forms.Button();
+			this.label10 = new System.Windows.Forms.Label();
+			this.iterationsBox = new System.Windows.Forms.TextBox();
+			this.label9 = new System.Windows.Forms.Label();
+			this.label8 = new System.Windows.Forms.Label();
+			this.predictionSizeBox = new System.Windows.Forms.TextBox();
+			this.label7 = new System.Windows.Forms.Label();
+			this.windowSizeBox = new System.Windows.Forms.TextBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.geneticMethodBox = new System.Windows.Forms.ComboBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.functionsSetBox = new System.Windows.Forms.ComboBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.selectionBox = new System.Windows.Forms.ComboBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.populationSizeBox = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.startButton = new System.Windows.Forms.Button();
+			this.stopButton = new System.Windows.Forms.Button();
+			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.currentPredictionErrorBox = new System.Windows.Forms.TextBox();
+			this.label13 = new System.Windows.Forms.Label();
+			this.currentLearningErrorBox = new System.Windows.Forms.TextBox();
+			this.label12 = new System.Windows.Forms.Label();
+			this.currentIterationBox = new System.Windows.Forms.TextBox();
+			this.label11 = new System.Windows.Forms.Label();
+			this.groupBox5 = new System.Windows.Forms.GroupBox();
+			this.solutionBox = new System.Windows.Forms.TextBox();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.groupBox1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
+			this.groupBox3.SuspendLayout();
+			this.groupBox4.SuspendLayout();
+			this.groupBox5.SuspendLayout();
+			this.SuspendLayout();
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.dataList);
+			this.groupBox1.Controls.Add(this.loadDataButton);
+			this.groupBox1.Location = new System.Drawing.Point(10, 10);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(180, 380);
+			this.groupBox1.TabIndex = 0;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Data";
+			// 
+			// dataList
+			// 
+			this.dataList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+																					   this.yColumnHeader,
+																					   this.estimatedYColumnHeader});
+			this.dataList.FullRowSelect = true;
+			this.dataList.GridLines = true;
+			this.dataList.Location = new System.Drawing.Point(10, 20);
+			this.dataList.Name = "dataList";
+			this.dataList.Size = new System.Drawing.Size(160, 315);
+			this.dataList.TabIndex = 1;
+			this.dataList.View = System.Windows.Forms.View.Details;
+			// 
+			// yColumnHeader
+			// 
+			this.yColumnHeader.Text = "Y:Real";
+			this.yColumnHeader.Width = 70;
+			// 
+			// estimatedYColumnHeader
+			// 
+			this.estimatedYColumnHeader.Text = "Y:Estimated";
+			this.estimatedYColumnHeader.Width = 70;
+			// 
+			// loadDataButton
+			// 
+			this.loadDataButton.Location = new System.Drawing.Point(10, 345);
+			this.loadDataButton.Name = "loadDataButton";
+			this.loadDataButton.TabIndex = 1;
+			this.loadDataButton.Text = "&Load";
+			this.loadDataButton.Click += new System.EventHandler(this.loadDataButton_Click);
+			// 
+			// openFileDialog
+			// 
+			this.openFileDialog.Filter = "CSV (Comma delimited) (*.csv)|*.csv";
+			this.openFileDialog.Title = "Select data file";
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.chart);
+			this.groupBox2.Location = new System.Drawing.Point(200, 10);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(300, 380);
+			this.groupBox2.TabIndex = 1;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Function";
+			// 
+			// chart
+			// 
+			this.chart.Location = new System.Drawing.Point(10, 20);
+			this.chart.Name = "chart";
+			this.chart.Size = new System.Drawing.Size(280, 350);
+			this.chart.TabIndex = 0;
+			// 
+			// groupBox3
+			// 
+			this.groupBox3.Controls.Add(this.moreSettingsButton);
+			this.groupBox3.Controls.Add(this.label10);
+			this.groupBox3.Controls.Add(this.iterationsBox);
+			this.groupBox3.Controls.Add(this.label9);
+			this.groupBox3.Controls.Add(this.label8);
+			this.groupBox3.Controls.Add(this.predictionSizeBox);
+			this.groupBox3.Controls.Add(this.label7);
+			this.groupBox3.Controls.Add(this.windowSizeBox);
+			this.groupBox3.Controls.Add(this.label6);
+			this.groupBox3.Controls.Add(this.label5);
+			this.groupBox3.Controls.Add(this.geneticMethodBox);
+			this.groupBox3.Controls.Add(this.label4);
+			this.groupBox3.Controls.Add(this.functionsSetBox);
+			this.groupBox3.Controls.Add(this.label3);
+			this.groupBox3.Controls.Add(this.selectionBox);
+			this.groupBox3.Controls.Add(this.label2);
+			this.groupBox3.Controls.Add(this.populationSizeBox);
+			this.groupBox3.Controls.Add(this.label1);
+			this.groupBox3.Location = new System.Drawing.Point(510, 10);
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.Size = new System.Drawing.Size(185, 240);
+			this.groupBox3.TabIndex = 2;
+			this.groupBox3.TabStop = false;
+			this.groupBox3.Text = "Settings";
+			// 
+			// moreSettingsButton
+			// 
+			this.moreSettingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(204)));
+			this.moreSettingsButton.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.moreSettingsButton.Location = new System.Drawing.Point(10, 220);
+			this.moreSettingsButton.Name = "moreSettingsButton";
+			this.moreSettingsButton.Size = new System.Drawing.Size(25, 15);
+			this.moreSettingsButton.TabIndex = 17;
+			this.moreSettingsButton.Text = ">>";
+			this.toolTip.SetToolTip(this.moreSettingsButton, "More settings");
+			this.moreSettingsButton.Click += new System.EventHandler(this.moreSettingsButton_Click);
+			// 
+			// label10
+			// 
+			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.label10.Location = new System.Drawing.Point(125, 220);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(58, 14);
+			this.label10.TabIndex = 16;
+			this.label10.Text = "( 0 - inifinity )";
+			// 
+			// iterationsBox
+			// 
+			this.iterationsBox.Location = new System.Drawing.Point(125, 200);
+			this.iterationsBox.Name = "iterationsBox";
+			this.iterationsBox.Size = new System.Drawing.Size(50, 20);
+			this.iterationsBox.TabIndex = 15;
+			this.iterationsBox.Text = "";
+			// 
+			// label9
+			// 
+			this.label9.Location = new System.Drawing.Point(10, 202);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(70, 16);
+			this.label9.TabIndex = 14;
+			this.label9.Text = "Iterations:";
+			// 
+			// label8
+			// 
+			this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label8.Location = new System.Drawing.Point(10, 190);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(165, 2);
+			this.label8.TabIndex = 13;
+			// 
+			// predictionSizeBox
+			// 
+			this.predictionSizeBox.Location = new System.Drawing.Point(125, 160);
+			this.predictionSizeBox.Name = "predictionSizeBox";
+			this.predictionSizeBox.Size = new System.Drawing.Size(50, 20);
+			this.predictionSizeBox.TabIndex = 12;
+			this.predictionSizeBox.Text = "";
+			this.predictionSizeBox.TextChanged += new System.EventHandler(this.predictionSizeBox_TextChanged);
+			// 
+			// label7
+			// 
+			this.label7.Location = new System.Drawing.Point(10, 162);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(90, 16);
+			this.label7.TabIndex = 11;
+			this.label7.Text = "Prediction size:";
+			// 
+			// windowSizeBox
+			// 
+			this.windowSizeBox.Location = new System.Drawing.Point(125, 135);
+			this.windowSizeBox.Name = "windowSizeBox";
+			this.windowSizeBox.Size = new System.Drawing.Size(50, 20);
+			this.windowSizeBox.TabIndex = 10;
+			this.windowSizeBox.Text = "";
+			this.windowSizeBox.TextChanged += new System.EventHandler(this.windowSizeBox_TextChanged);
+			// 
+			// label6
+			// 
+			this.label6.Location = new System.Drawing.Point(10, 137);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(80, 16);
+			this.label6.TabIndex = 9;
+			this.label6.Text = "Window size:";
+			// 
+			// label5
+			// 
+			this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label5.Location = new System.Drawing.Point(10, 125);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(165, 2);
+			this.label5.TabIndex = 8;
+			// 
+			// geneticMethodBox
+			// 
+			this.geneticMethodBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.geneticMethodBox.Items.AddRange(new object[] {
+																  "GP",
+																  "GEP"});
+			this.geneticMethodBox.Location = new System.Drawing.Point(110, 95);
+			this.geneticMethodBox.Name = "geneticMethodBox";
+			this.geneticMethodBox.Size = new System.Drawing.Size(65, 21);
+			this.geneticMethodBox.TabIndex = 7;
+			// 
+			// label4
+			// 
+			this.label4.Location = new System.Drawing.Point(10, 97);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(100, 16);
+			this.label4.TabIndex = 6;
+			this.label4.Text = "Genetic method:";
+			// 
+			// functionsSetBox
+			// 
+			this.functionsSetBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.functionsSetBox.Items.AddRange(new object[] {
+																 "Simple",
+																 "Extended"});
+			this.functionsSetBox.Location = new System.Drawing.Point(110, 70);
+			this.functionsSetBox.Name = "functionsSetBox";
+			this.functionsSetBox.Size = new System.Drawing.Size(65, 21);
+			this.functionsSetBox.TabIndex = 5;
+			// 
+			// label3
+			// 
+			this.label3.Location = new System.Drawing.Point(10, 72);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(100, 16);
+			this.label3.TabIndex = 4;
+			this.label3.Text = "Function set:";
+			// 
+			// selectionBox
+			// 
+			this.selectionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.selectionBox.Items.AddRange(new object[] {
+															  "Elite",
+															  "Rank",
+															  "Roulette"});
+			this.selectionBox.Location = new System.Drawing.Point(110, 45);
+			this.selectionBox.Name = "selectionBox";
+			this.selectionBox.Size = new System.Drawing.Size(65, 21);
+			this.selectionBox.TabIndex = 3;
+			// 
+			// label2
+			// 
+			this.label2.Location = new System.Drawing.Point(10, 47);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(100, 16);
+			this.label2.TabIndex = 2;
+			this.label2.Text = "Selection method:";
+			// 
+			// populationSizeBox
+			// 
+			this.populationSizeBox.Location = new System.Drawing.Point(125, 20);
+			this.populationSizeBox.Name = "populationSizeBox";
+			this.populationSizeBox.Size = new System.Drawing.Size(50, 20);
+			this.populationSizeBox.TabIndex = 1;
+			this.populationSizeBox.Text = "";
+			// 
+			// label1
+			// 
+			this.label1.Location = new System.Drawing.Point(10, 22);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(100, 16);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Population size:";
+			// 
+			// startButton
+			// 
+			this.startButton.Enabled = false;
+			this.startButton.Location = new System.Drawing.Point(535, 364);
+			this.startButton.Name = "startButton";
+			this.startButton.TabIndex = 3;
+			this.startButton.Text = "&Start";
+			this.startButton.Click += new System.EventHandler(this.startButton_Click);
+			// 
+			// stopButton
+			// 
+			this.stopButton.Enabled = false;
+			this.stopButton.Location = new System.Drawing.Point(620, 364);
+			this.stopButton.Name = "stopButton";
+			this.stopButton.TabIndex = 4;
+			this.stopButton.Text = "S&top";
+			this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
+			// 
+			// groupBox4
+			// 
+			this.groupBox4.Controls.Add(this.currentPredictionErrorBox);
+			this.groupBox4.Controls.Add(this.label13);
+			this.groupBox4.Controls.Add(this.currentLearningErrorBox);
+			this.groupBox4.Controls.Add(this.label12);
+			this.groupBox4.Controls.Add(this.currentIterationBox);
+			this.groupBox4.Controls.Add(this.label11);
+			this.groupBox4.Location = new System.Drawing.Point(510, 255);
+			this.groupBox4.Name = "groupBox4";
+			this.groupBox4.Size = new System.Drawing.Size(185, 100);
+			this.groupBox4.TabIndex = 5;
+			this.groupBox4.TabStop = false;
+			this.groupBox4.Text = "Current iteration:";
+			// 
+			// currentPredictionErrorBox
+			// 
+			this.currentPredictionErrorBox.Location = new System.Drawing.Point(125, 70);
+			this.currentPredictionErrorBox.Name = "currentPredictionErrorBox";
+			this.currentPredictionErrorBox.ReadOnly = true;
+			this.currentPredictionErrorBox.Size = new System.Drawing.Size(50, 20);
+			this.currentPredictionErrorBox.TabIndex = 5;
+			this.currentPredictionErrorBox.Text = "";
+			// 
+			// label13
+			// 
+			this.label13.Location = new System.Drawing.Point(10, 72);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(100, 16);
+			this.label13.TabIndex = 4;
+			this.label13.Text = "Prediction error:";
+			// 
+			// currentLearningErrorBox
+			// 
+			this.currentLearningErrorBox.Location = new System.Drawing.Point(125, 45);
+			this.currentLearningErrorBox.Name = "currentLearningErrorBox";
+			this.currentLearningErrorBox.ReadOnly = true;
+			this.currentLearningErrorBox.Size = new System.Drawing.Size(50, 20);
+			this.currentLearningErrorBox.TabIndex = 3;
+			this.currentLearningErrorBox.Text = "";
+			// 
+			// label12
+			// 
+			this.label12.Location = new System.Drawing.Point(10, 47);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(80, 16);
+			this.label12.TabIndex = 2;
+			this.label12.Text = "Learning error:";
+			// 
+			// currentIterationBox
+			// 
+			this.currentIterationBox.Location = new System.Drawing.Point(125, 20);
+			this.currentIterationBox.Name = "currentIterationBox";
+			this.currentIterationBox.ReadOnly = true;
+			this.currentIterationBox.Size = new System.Drawing.Size(50, 20);
+			this.currentIterationBox.TabIndex = 1;
+			this.currentIterationBox.Text = "";
+			// 
+			// label11
+			// 
+			this.label11.Location = new System.Drawing.Point(10, 22);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(70, 16);
+			this.label11.TabIndex = 0;
+			this.label11.Text = "Iteration:";
+			// 
+			// groupBox5
+			// 
+			this.groupBox5.Controls.Add(this.solutionBox);
+			this.groupBox5.Location = new System.Drawing.Point(10, 395);
+			this.groupBox5.Name = "groupBox5";
+			this.groupBox5.Size = new System.Drawing.Size(685, 50);
+			this.groupBox5.TabIndex = 6;
+			this.groupBox5.TabStop = false;
+			this.groupBox5.Text = "Solution";
+			// 
+			// solutionBox
+			// 
+			this.solutionBox.Location = new System.Drawing.Point(10, 20);
+			this.solutionBox.Name = "solutionBox";
+			this.solutionBox.ReadOnly = true;
+			this.solutionBox.Size = new System.Drawing.Size(665, 20);
+			this.solutionBox.TabIndex = 0;
+			this.solutionBox.Text = "";
+			// 
+			// MainForm
+			// 
+			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+			this.ClientSize = new System.Drawing.Size(704, 455);
+			this.Controls.Add(this.groupBox5);
+			this.Controls.Add(this.groupBox4);
+			this.Controls.Add(this.stopButton);
+			this.Controls.Add(this.startButton);
+			this.Controls.Add(this.groupBox3);
+			this.Controls.Add(this.groupBox2);
+			this.Controls.Add(this.groupBox1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
+			this.Name = "MainForm";
+			this.Text = "Time Series Prediction using Genetic Programming and Gene Expression Programming";
+			this.Closing += new System.ComponentModel.CancelEventHandler(this.MainForm_Closing);
+			this.groupBox1.ResumeLayout(false);
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox3.ResumeLayout(false);
+			this.groupBox4.ResumeLayout(false);
+			this.groupBox5.ResumeLayout(false);
+			this.ResumeLayout(false);
 
 		}
 		#endregion
@@ -643,7 +639,7 @@ namespace TimeSeries
 					while ( ( i < 50 ) && ( ( str = reader.ReadLine( ) ) != null ) )
 					{
 						// parse the value
-						tempData[i] = double.Parse(str, CultureInfo.InvariantCulture);
+						tempData[i] = double.Parse( str );
 
 						i++;
 					}

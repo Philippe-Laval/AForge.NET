@@ -17,7 +17,7 @@ namespace AForge.Tests
         {
             IntPoint point = new IntPoint( x, y );
 
-            Assert.AreEqual( point.EuclideanNorm( ), expectedNorm );
+            Assert.That( expectedNorm, Is.EqualTo(point.EuclideanNorm( )));
         }
 
         [TestCase( 1, 2, 1, 2, true )]
@@ -29,7 +29,7 @@ namespace AForge.Tests
             IntPoint point1 = new IntPoint( x1, y1 );
             IntPoint point2 = new IntPoint( x2, y2 );
 
-            Assert.AreEqual( point1 == point2, areEqual );
+            Assert.That( areEqual, Is.EqualTo(point1 == point2));
         }
 
         [TestCase( 1, 2, 1, 2, false )]
@@ -41,7 +41,7 @@ namespace AForge.Tests
             IntPoint point1 = new IntPoint( x1, y1 );
             IntPoint point2 = new IntPoint( x2, y2 );
 
-            Assert.AreEqual( point1 != point2, areNotEqual );
+            Assert.That( areNotEqual, Is.EqualTo(point1 != point2));
         }
     }
 }

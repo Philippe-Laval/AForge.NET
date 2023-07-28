@@ -18,7 +18,7 @@ namespace AForge.Tests
             IntRange range1 = new IntRange( min1, max1 );
             IntRange range2 = new IntRange( min2, max2 );
 
-            Assert.AreEqual( expectedResult, range1.IsOverlapping( range2 ) );
+            Assert.That( range1.IsOverlapping( range2 ), Is.EqualTo(expectedResult));
         }
 
         [TestCase( 0, 1, 0, 1 )]
@@ -28,8 +28,8 @@ namespace AForge.Tests
             IntRange iRange = new IntRange( iMin, iMax );
             Range range = iRange;
 
-            Assert.AreEqual( fMin, range.Min );
-            Assert.AreEqual( fMax, range.Max );
+            Assert.That( range.Min, Is.EqualTo(fMin));
+            Assert.That( range.Max, Is.EqualTo(fMax));
         }
 
         [TestCase( 1, 2, 1, 2, true )]
@@ -42,9 +42,9 @@ namespace AForge.Tests
             IntRange range1 = new IntRange( min1, max1 );
             IntRange range2 = new IntRange( min2, max2 );
 
-            Assert.AreEqual( range1.Equals( range2 ), areEqual );
-            Assert.AreEqual( range1 == range2, areEqual );
-            Assert.AreEqual( range1 != range2, !areEqual );
+            Assert.That( areEqual, Is.EqualTo(range1.Equals( range2 )));
+            Assert.That( areEqual, Is.EqualTo(range1 == range2));
+            Assert.That( !areEqual, Is.EqualTo(range1 != range2));
         }
     }
 }
