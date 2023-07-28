@@ -74,8 +74,8 @@ namespace TSP
 			// initialize chart
 			chart.AddDataSeries( "cities", Color.Red, Chart.SeriesType.Dots, 5, false );
 			chart.AddDataSeries( "path", Color.Blue, Chart.SeriesType.Line, 1, false );
-			chart.RangeX = new Range( 0, 1000 );
-			chart.RangeY = new Range( 0, 1000 );
+			chart.RangeX = new AForge.Range( 0, 1000 );
+			chart.RangeY = new AForge.Range( 0, 1000 );
 
 			//
 			UpdateSettings( );
@@ -328,14 +328,6 @@ namespace TSP
 		}
 		#endregion
 
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main( ) 
-		{
-			Application.Run( new MainForm( ) );
-		}
 
         // Delegates to enable async calls for setting controls properties
         private delegate void SetTextCallback( System.Windows.Forms.Control control, string text );
@@ -503,7 +495,7 @@ namespace TSP
 		void SearchSolution( )
 		{
 			// set random generators range
-			Neuron.RandRange = new Range( 0, 1000 );
+			Neuron.RandRange = new AForge.Range( 0, 1000 );
 
 			// create network
 			DistanceNetwork network = new DistanceNetwork( 2, neurons );
