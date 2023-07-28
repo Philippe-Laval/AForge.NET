@@ -172,3 +172,5 @@ Sources/Vision/AForge.Vision.xml
 /Sources/.vs/Build All/FileContentIndex/f1b65cb6-c80a-4f2a-a075-751a66047229.vsidx
 /Sources/.vs/Build All/FileContentIndex/read.lock
 /.gitignore
+*.vsidx
+*.lock
