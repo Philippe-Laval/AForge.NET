@@ -17,6 +17,7 @@ using System.Threading;
 using AForge;
 using AForge.Genetic;
 using AForge.Controls;
+using System.Globalization;
 
 namespace Optimization1D
 {
@@ -407,15 +408,6 @@ namespace Optimization1D
 		}
 		#endregion
 
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main( ) 
-		{
-			Application.Run( new MainForm( ) );
-		}
-
         // Delegates to enable async calls for setting controls properties
         private delegate void SetTextCallback( System.Windows.Forms.Control control, string text );
 
@@ -485,7 +477,7 @@ namespace Optimization1D
 		{
 			try
 			{
-				userFunction.Range = new Range( float.Parse( minXBox.Text ), userFunction.Range.Max );
+				userFunction.Range = new AForge.Range( float.Parse( minXBox.Text, CultureInfo.InvariantCulture), userFunction.Range.Max );
 				UpdateChart( );
 			}
 			catch
@@ -498,7 +490,7 @@ namespace Optimization1D
 		{
 			try
 			{
-				userFunction.Range = new Range( userFunction.Range.Min, float.Parse( maxXBox.Text ) );
+				userFunction.Range = new AForge.Range( userFunction.Range.Min, float.Parse( maxXBox.Text, CultureInfo.InvariantCulture) );
 				UpdateChart( );
 			}
 			catch
@@ -654,7 +646,7 @@ namespace Optimization1D
 	// Function to optimize
 	public class UserFunction : OptimizationFunction1D
 	{
-		public UserFunction( ) : base( new Range( 0, 255 ) ) { }
+		public UserFunction( ) : base( new AForge.Range( 0, 255 ) ) { }
 
 		public override double OptimizationFunction( double x )
 		{
