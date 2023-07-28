@@ -40,7 +40,7 @@ namespace AForge.Imaging.Tests
         public void GetRectangleSumTest( int x1, int y1, int x2, int y2, uint expectedSum )
         {
             uint sum = integralImage.GetRectangleSum( x1, y1, x2, y2 );
-            Assert.AreEqual( sum, expectedSum );
+            Assert.That( expectedSum, Is.EqualTo(sum));
         }
 
         [Test]
@@ -53,7 +53,7 @@ namespace AForge.Imaging.Tests
         public void GetRectangleSumUnsafeTest( int x1, int y1, int x2, int y2, uint expectedSum )
         {
             uint sum = integralImage.GetRectangleSum( x1, y1, x2, y2 );
-            Assert.AreEqual( sum, expectedSum );
+            Assert.That( expectedSum, Is.EqualTo(sum));
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace AForge.Imaging.Tests
         public void GetRectangleSumTest( int x, int y, int radius, uint expectedSum )
         {
             uint sum = integralImage.GetRectangleSum( x, y, radius );
-            Assert.AreEqual( sum, expectedSum );
+            Assert.That( expectedSum, Is.EqualTo(sum));
         }
 
         [Test]
@@ -75,7 +75,7 @@ namespace AForge.Imaging.Tests
         public void GetRectangleSumUnsafeTest( int x, int y, int radius, uint expectedSum )
         {
             uint sum = integralImage.GetRectangleSum( x, y, radius );
-            Assert.AreEqual( sum, expectedSum );
+            Assert.That( expectedSum, Is.EqualTo(sum));
         }
 
         [Test]
@@ -91,7 +91,7 @@ namespace AForge.Imaging.Tests
         public void GetRectangleMeanTest( int x1, int y1, int x2, int y2, float expectedMean )
         {
             float mean = integralImage.GetRectangleMean( x1, y1, x2, y2 );
-            Assert.AreEqual( mean, expectedMean );
+            Assert.That( expectedMean, Is.EqualTo(mean));
         }
 
         [Test]
@@ -106,7 +106,7 @@ namespace AForge.Imaging.Tests
         public void GetHaarXWavelet( int x, int y, int radius, int expectedValue )
         {
             int value = integralImage.GetHaarXWavelet( x, y, radius );
-            Assert.AreEqual( value, expectedValue );
+            Assert.That( expectedValue, Is.EqualTo(value));
         }
 
         [Test]
@@ -121,7 +121,7 @@ namespace AForge.Imaging.Tests
         public void GetHaarYWavelet( int x, int y, int radius, int expectedValue )
         {
             int value = integralImage.GetHaarYWavelet( x, y, radius );
-            Assert.AreEqual( value, expectedValue );
+            Assert.That( expectedValue, Is.EqualTo(value));
         }
     }
 }
