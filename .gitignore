@@ -174,3 +174,6 @@ Sources/Vision/AForge.Vision.xml
 /.gitignore
 *.vsidx
 *.lock
+*.vsidx
+*.vsidx
+*.vsidx
